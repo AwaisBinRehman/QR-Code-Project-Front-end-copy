@@ -1,0 +1,690 @@
+<div class="container-fluid cont-widht">
+  <div class="row">
+
+    <div class="col-12">
+      <h2>Add PRODUCTS</h2>
+      <p>Register with RIGHT BRAND ASIA to get RBA barcode number for your products on renewal based subscription. The
+        barcode
+        /QR code subscription fee is based on the company's turnover, the number of barcodes/QR codes, & the
+        subscription period.
+        When choosing the number of barcodes to register, consider your current & future requirements for barcodes. Your
+        barcode
+        subscription includes access to our data cart service (base version only) which allows you to allocate barcode
+        numbers, link /
+        relink QR codes and manage all your product data.
+      </p>
+    </div>
+
+
+
+
+    <form class="row g-3 mt-5 border-form p-3" [formGroup]="addForm" (ngSubmit)="onSubmit()"
+      enctype="multipart/form-data">
+      <!-- bar start end here  -->
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="barcode" class="form-label fw-bold">
+            Select Bar Code
+          </label>
+          <select name="barcode" id="barcode" class="w-100 p-3 select1 btn-2 mt-2 form-control"
+            [(ngModel)]="selectedBarcodeObj" [ngModelOptions]="{ standalone: true }" (change)="onBarcodeTypeChange()">
+            <option [ngValue]="i" *ngFor="let i of barcodeObjs" class="active">
+              {{ i.name }}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="barcode" class="form-label fw-bold">
+            Product Bar Code
+          </label>
+          <input type="text" class="form-control mt-2" formControlName="barcode" [(ngModel)]="value"
+            [ngClass]="{ 'is-invalid': submitted && f.barcode.errors }" placeholder="Write Bar Code*">
+          <div *ngIf="submitted && f.barcode.errors" class="invalid-feedback">
+            <div *ngIf="f.barcode.errors.required">Barcode is required</div>
+            <div *ngIf="f.barcode.errors.maxlength || f.barcode.errors.minlength">
+              <div *ngIf="selectedBarcodeObj.rule === 'Numeric'">
+                <ng-container *ngIf="f.barcode.errors.maxlength">
+                  Barcode must not exceed {{ f.barcode.errors.maxlength.requiredLength }} digits
+                </ng-container>
+                <ng-container *ngIf="f.barcode.errors.minlength">
+                  Barcode must contain at least {{ f.barcode.errors.minlength.requiredLength }} digits
+                </ng-container>
+              </div>
+              <div *ngIf="selectedBarcodeObj.rule === 'Alphanumeric'">
+                <ng-container *ngIf="f.barcode.errors.maxlength">
+                  Barcode must not exceed {{ f.barcode.errors.maxlength.requiredLength }} characters
+                </ng-container>
+                <ng-container *ngIf="f.barcode.errors.minlength">
+                  Barcode must contain at least {{ f.barcode.errors.minlength.requiredLength }} characters
+                </ng-container>
+              </div>
+            </div>
+            <div *ngIf="f.barcode.errors.pattern">
+              <ng-container *ngIf="selectedBarcodeObj.rule === 'Numeric'">
+                Barcode must contain only numeric digits
+              </ng-container>
+              <ng-container *ngIf="selectedBarcodeObj.rule === 'Alphanumeric'">
+                Barcode must contain only alphanumeric characters
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- bar code end here  -->
+
+
+      <div class="col-md-8">
+        <div class="form-group">
+          <label for="product_name" class="form-label">
+            Product Name
+          </label>
+          <input type="text" class="form-control" formControlName="product_name"
+            [ngClass]="{ 'is-invalid': submitted && f.product_name.errors }" placeholder="Product name*">
+          <div *ngIf="submitted && f.product_name.errors" class="invalid-feedback">
+            <div *ngIf="f.product_name.errors.required">product_name is required</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <label for="CurrencyUnit">
+          Currency Unit
+        </label>
+        <select class="form-select form-control mt-2" formControlName="CurrencyUnit"
+          [ngClass]="{ 'is-invalid': submitted && f.CurrencyUnit.errors }">
+          <option value="">-- Select CurrencyUnit --</option>
+          <option value="PKR">PKR</option>
+          <option value="USD">USD</option>
+          <option value="eur">EUR</option>
+        </select>
+        <div *ngIf="submitted && f.CurrencyUnit.errors" class="invalid-feedback">
+          <div *ngIf="f.CurrencyUnit.errors.required">CurrencyUnit is required</div>
+        </div>
+      </div>
+
+
+      <div class="col-md-6 col-lg-6 col-sm-12">
+        <label for="Model" class="form-label">Model</label>
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Model" formControlName="Model"
+            [ngClass]="{ 'is-invalid': submitted && f.Model.errors }">
+          <div *ngIf="submitted && f.Model.errors" class="invalid-feedback">
+            <div *ngIf="f.Model.errors.required">Model is required</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-6 col-sm-12">
+        <label for="Manufacturer" class="form-label">Manufacturer</label>
+        <div class="input-group">
+          <input type="text" placeholder="Manufacturer" class="form-control" formControlName="Manufacturer"
+            [ngClass]="{ 'is-invalid': submitted && f.Manufacturer.errors }">
+          <div *ngIf="submitted && f.Manufacturer.errors" class="invalid-feedback">
+            <div *ngIf="f.Manufacturer.errors.required">Manufacturer is required</div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-12 col-lg-6 col-md-6 col-sm-12">
+        <label for="AvgPrice" class="form-label">AvgPrice</label>
+        <div class="input-group">
+          <input type="number" class="form-control" formControlName="AvgPrice"
+            [ngClass]="{ 'is-invalid': submitted && f.AvgPrice.errors }" placeholder="AvgPrice">
+          <div *ngIf="submitted && f.AvgPrice.errors" class="invalid-feedback">
+            <div *ngIf="f.AvgPrice.errors.required">AvgPrice is required</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-lg-6 col-md-6 col-sm-12">
+        <label for="Specification" class="form-label">Specification</label>
+        <div class="input-group">
+          <input type="text" class="form-control" formControlName="specfication"
+            [ngClass]="{ 'is-invalid': submitted && f.specfication.errors }" placeholder="Specfication">
+          <div *ngIf="submitted && f.specfication.errors" class="invalid-feedback">
+            <div *ngIf="f.specfication.errors.required">specfication is required</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6 col-sm-6 col-sm-12 col-12">
+        <label for="Feature" class="form-label">Feature</label>
+        <div class="input-group">
+          <input type="text" class="form-control" formControlName="Feature"
+            [ngClass]="{ 'is-invalid': submitted && f.Feature.errors }" placeholder="Feature">
+          <div *ngIf="submitted && f.Feature.errors" class="invalid-feedback">
+            <div *ngIf="f.Feature.errors.required">Feature is required</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6 col-sm-6 col-sm-12 col-12">
+        <label for="Description" class="form-label">Description</label>
+        <div class="input-group">
+          <input type="text" class="form-control" formControlName="Description"
+            [ngClass]="{ 'is-invalid': submitted && f.Description.errors }" placeholder="Description">
+          <div *ngIf="submitted && f.Description.errors" class="invalid-feedback">
+            <div *ngIf="f.Description.errors.required">Description is required</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6 col-sm-6 col-sm-12 col-12">
+        <label for="Size" class="form-label">Size</label>
+        <div class="input-group">
+          <input type="text" class="form-control" formControlName="size"
+            [ngClass]="{ 'is-invalid': submitted && f.size.errors }" placeholder="size Medium Large etc...">
+          <div *ngIf="submitted && f.size.errors" class="invalid-feedback">
+            <div *ngIf="f.size.errors.required">size is required</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6 col-sm-6 col-sm-12 col-12">
+        <label for="Brand" class="form-label">Brand</label>
+        <div class="input-group">
+          <input type="text" class="form-control" formControlName="brand"
+            [ngClass]="{ 'is-invalid': submitted && f.brand.errors }" placeholder="Brand">
+          <div *ngIf="submitted && f.brand.errors" class="invalid-feedback">
+            <div *ngIf="f.brand.errors.required">Brand is required</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6 col-sm-6 col-sm-12 col-12">
+        <label for="Type" class="form-label">Type</label>
+        <div class="input-group">
+          <input type="text" class="form-control" formControlName="type"
+            [ngClass]="{ 'is-invalid': submitted && f.type.errors }" placeholder="Type">
+          <div *ngIf="submitted && f.type.errors" class="invalid-feedback">
+            <div *ngIf="f.type.errors.required">Type is required</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6 col-sm-6 col-sm-12 col-12">
+        <label for="produc-image" class="form-label">Product Image</label>
+        <div class="input-group">
+          <input type="file" accept="upload/image/*" (change)="onFileSelect($event)" class="form-control"
+            formControlName="productpicture" [ngClass]="{ 'is-invalid': submitted && f.productpicture.errors }"
+            placeholder="Product Image">
+          <div *ngIf="submitted && f.productpicture.errors" class="invalid-feedback">
+            <div *ngIf="f.productpicture.errors.required">Product Image is required</div>
+          </div>
+          <div class="mt-2" *ngIf="iconPreview">
+            <img [src]="iconPreview" alt="Product image Preview" height="100">
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6 col-sm-6 col-sm-12 col-md-12">
+        <label for="logo">
+          Logo
+        </label>
+        <div class="input-group">
+          <span class="input-group-text text-2 w-50" id="basic-addon1"> <b class="text-primary"> UPLOAD </b>&nbsp;
+            Company, Firm etc Reg Logo </span>
+          <input multiple formControlName='logo' (change)="onLogoSelect($event)" accept="image/*"
+            [ngClass]="{'is-invalid':submitted &&  f.logo.errors}" type="file" class="form-control"
+            placeholder="UPLOAD Company, Firm etc Reg Logo">
+
+          <div class="invalid-feedback" *ngIf="f.logo.errors">
+            <div *ngIf="f.logo.errors?.required">Logo images is required</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="row">
+          <div class="col-6">
+            <button type="submit" class="btn submit-btn float-end mt-4 form-control p-2">Add Product</button>
+          </div>
+        </div>
+      </div>
+
+    </form>
+  </div><!-- row end  -->
+</div><!-- Container-fluid end  -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="container-fluid cont-widht">
+  <div class="row">
+
+      <div class="col-12">
+          <h2>Add PRODUCTS</h2>
+          <p>Register with RIGHT BRAND ASIA to get RBA barcode number for your products on renewal based subscription.
+              The barcode
+              /QR code subscription fee is based on the company's turnover, the number of barcodes/QR codes, & the
+              subscription period.
+              When choosing the number of barcodes to register, consider your current & future requirements for
+              barcodes. Your barcode
+              subscription includes access to our data cart service (base version only) which allows you to allocate
+              barcode numbers, link /
+              relink QR codes and manage all your product data.
+          </p>
+      </div>
+
+      <form class="row g-3 mt-5 border-form p-3" [formGroup]="productForm"
+          (ngSubmit)="isEdit ? updateProductData() : onSubmit()">
+          <div class="col-md-8">
+              <label for="product_name" class="form-label">
+                  <h5>Product Name</h5>
+              </label>
+              <input type="text" class="form-control" id="product_name" placeholder="Product Name"
+                  formControlName="product_name">
+          </div>
+          <div class="col-md-3">
+              <p>Currency Unit</p>
+              <select class="form-select" aria-label="Default select example" formControlName="CurrencyUnit">
+                <option value="">Please Select Currency</option>
+                <option value="usd">USD</option>
+                <option value="pkr">PKR</option>
+                <option value="eur">EUR</option>
+              </select>
+            </div>
+            <div class="col-12">
+              <div class="input-group">
+                <span class="input-group-text" id="basic-addon1">Model</span>
+                <input type="text" class="form-control" placeholder="Model" aria-describedby="basic-addon1" formControlName="Model">
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="input-group">
+                <span class="input-group-text text-2 w-50" id="basic-addon1">Manufacturer</span>
+                <input type="text" class="form-control" placeholder="Manufacturer" aria-label="Manufacturer" aria-describedby="basic-addon1" formControlName="Manufacturer">
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="input-group">
+                <span class="input-group-text text-2 w-50" id="basic-addon1">AvgPrice</span>
+                <input type="number" class="form-control" placeholder="AvgPrice" aria-label="AvgPrice" aria-describedby="basic-addon1" formControlName="AvgPrice">
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="input-group">
+                <span class="input-group-text text-2 w-50" id="basic-addon1">Specification</span>
+                <input type="text" class="form-control" placeholder="Specification" aria-label="Specification" aria-describedby="basic-addon1" formControlName="specfication">
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="input-group">
+                <span for="floatingInput" class="input-group-text text-2 w-50" id="basic-addon1">Feature</span>
+                <input type="text" class="form-control" id="floatingInput" placeholder="Feature" formControlName="Feature" [class.is-invalid]="submitted && f.Feature.errors" id="inputFeature4">
+                <div *ngIf="submitted && f.Feature.errors" class="invalid-feedback">
+                  <div *ngIf="f.Feature.errors.required">Feature is required</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12">
+                  <div class="input-group">
+                      <span class="input-group-text text-2 w-50" id="basic-addon1">Description</span>
+                      <input type="text" class="form-control" placeholder="Description" aria-label="Description" aria-describedby="basic-addon1" formControlName="Description">
+                  </div>
+              </div>
+          <div class="col-12">
+              <div class="input-group">
+                  <span class="input-group-text text-2 w-50" id="basic-addon1">Product Image</span>
+                  <input type="file" class="form-control" placeholder="Product Image" aria-label="Product Image" aria-describedby="basic-addon1" #filePicker (change)="onproductpicturePicked($event)">
+              </div>
+          </div>
+          <div class="col-md-6">
+              <div class="row">
+                  <div class="col-6">
+                      <button class="btn submit-btn float-end">Submit</button>
+                  </div>
+              </div>
+          </div>
+
+      </form>
+
+
+
+
+
+
+
+      form end  -->
+<!-- </div> -->
+<!-- row end  -->
+<!-- </div> -->
+<!-- Container-fluid end  -->

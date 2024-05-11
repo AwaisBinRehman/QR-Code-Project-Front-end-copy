@@ -1,0 +1,354 @@
+.cont-width{
+    width: 90%;
+}
+.first-col{
+    border-right: 1px solid gray;
+}
+h1{
+    font-size: 2.6rem;
+}
+b{
+    font-size: 3.9rem;
+    font-weight: normal;
+}
+.downlaod-div{
+    background-color: #3e849e;
+}
+.download-para{
+    color: #f2f2f2f2;
+    font-size: 1.5rem;
+    padding-top: 20px;
+}
+.offcanvasRightLabel{
+    font-size: 2.7rem;
+    color: #989898;
+    font-weight: 900 !important;
+}
+.label{
+    font-size: 1.7rem;
+    color: #989898;
+}
+.select1{
+    box-shadow: 2px 2px 4px #98989896;
+    border-bottom:  3px solid lightcoral !important;
+    border: none;
+}
+.select1:hover{
+    border-color: lightcoral;
+    background-color: lightcoral;
+    color: #fff;
+}
+.active{
+    background-color: #f2f2f2;
+    color: #3e3e3e;
+    border: none !important;
+    border-left: 4px solid lightcoral !important;
+}
+.select2{
+    border-bottom:  3px solid lightgreen !important;
+    border: none;
+    box-shadow: 2px 2px 4px #98989896;
+}
+.select2:hover{
+    background-color: lightgreen;
+    color: #f2f2f2;
+}
+.select3{
+    border-bottom:  3px solid lightsalmon !important;
+    border: none;
+    box-shadow: 2px 2px 4px #98989896;
+}
+.select3:hover{
+    background-color: lightsalmon;
+    color: #f2f2f2;
+}
+.select4{
+    border-bottom:  3px solid peru !important;
+    border: none;
+    box-shadow: 2px 2px 4px #98989896;
+}
+.select4:hover{
+    background-color: peru;
+    color: #fff;
+}
+.select5{
+    border-bottom:  3px solid orange !important;
+    border: none;
+    box-shadow: 2px 2px 4px #98989896;
+}
+.select5:hover{
+    background-color: orange;
+    color: #ffff;
+}
+.select6{
+    border-bottom:  3px solid rgb(80, 144, 144) !important;
+    border: none;
+    box-shadow: 2px 2px 4px #98989896;
+}
+.select6:hover{
+    background-color: rgb(80, 144, 144);
+    color: #f2f2f2;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.inner-color-div{
+    background-color: #ECECEC;
+}
+.scrolling-div{
+    height: 47vh; 
+    width: 400px; 
+    overflow: scroll; 
+    overflow-x:hidden;
+    overflow-y:scroll;
+    margin-left: 20px;
+    box-shadow: 2px 2px 2px #98989864;
+}
+.bar-code-img{
+    width: 60%;   
+}
+.gentrate-button{
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    color: skyblue;
+}
+.btn-danger{
+    border-radius: 0;
+}
+
+/*====================================================
+#### bar code type set div start #####
+====================================================*/
+.en13{
+    background-color: #fff;
+    border-radius: 50%;
+}
+
+
+
+/* =================================== */
+
+.collapse{
+    border-radius: 0;
+}
+.icon-side{
+    background-color: #b20033 !important;
+    transition: all 0.2s ease-in-out;
+}
+.icon-side:hover{
+    background-color: orange !important;
+}
+.input-group{
+    background-color: #ECECEC;
+    color: #fff !important;
+}
+.text-start{
+    font-size: 1.3rem;
+    font-weight: 800;
+}
+
+
+
+
+
+.input-group-text{
+    background-color: #b20033 !important;
+    transition: all 0.2s ease-in-out;
+    width: 50px;
+    padding: 20px;
+    border: 1px solid #3e3e3e47;
+}
+.input-group-text:hover{
+    background-color: orange !important;
+}
+.input-group a{
+    text-decoration: none;
+    margin-left: 30px !important;
+    margin-top: 10px;
+    color: #3e3e3e;
+}
+.offcanvas{
+    background-color: #ECECEC;
+}
+
+
+/*========================
+### Responsive Code ###
+=========================*/
+
+@media (min-width: 280px) { } 
+@media (min-width: 360px) {
+    .first-col{
+        border-right: none;
+    }
+    h1{
+        font-size: 2.2rem;
+    }
+    b{
+        font-size: 3.2rem;
+        font-weight: normal;
+    }
+    .main-introl-para{
+        text-align: justify;
+    }
+    .inner-color-div{
+        margin-top: 10px;
+    }
+    .scrolling-div{
+        height: 40vh; 
+        width: 280px; 
+        margin-left: 0px;
+    }
+}
+@media (min-width: 390px) {
+    .scrolling-div{
+        height: 40vh; 
+        width: 310px; 
+        margin-left: 0px;
+    }
+}
+@media (min-width: 412px) {
+    .scrolling-div{
+        height: 40vh; 
+        width: 326px; 
+        margin-left: 0px;
+    }
+}
+@media (min-width: 640px) { 
+    .first-col{
+        border-right: none;
+    }
+    h1{
+        font-size: 1.6rem;
+    }
+    b{
+        font-size: 2.4rem;
+        font-weight: normal;
+    }
+    .main-introl-para{
+        text-align: justify;
+    }
+    .inner-color-div{
+        margin-top: 10px;
+    }
+    .scrolling-div{
+        height: 37vh; 
+        width: 230px; 
+        margin-left: 0px;
+    }
+    .bar-div{
+        height: 37vh;
+    }
+}
+@media (min-width: 768px) { 
+    .first-col{
+        border-right: none;
+    }
+    h1{
+        font-size: 1.5rem;
+    }
+    b{
+        font-size: 2.2rem;
+        font-weight: normal;
+    }
+    .main-introl-para{
+        text-align: justify;
+    }
+    .inner-color-div{
+        margin-top: 10px;
+    }
+    .scrolling-div{
+        height: 44vh; 
+        width: 210px; 
+        margin-left: 0px;
+    }
+    .bar-div{
+        height: 44vh;
+    }
+ }
+@media (min-width: 1024px) { 
+    .first-col{
+        border-right: 1px solid gray;
+    }
+    h1{
+        font-size: 1.8rem;
+    }
+    b{
+        font-size: 2.7rem;
+        font-weight: normal;
+    }
+    .main-introl-para{
+        text-align: justify;
+    }
+    .inner-color-div{
+        margin-top: 10px;
+    }
+    .scrolling-div{
+        height: 62vh; 
+        width: 280px; 
+        margin-left: 0px;
+    }
+    .bar-div{
+        height: 62vh;
+    }
+}
+@media (min-width: 1280px) { 
+    .first-col{
+        border-right: 1px solid gray;
+    }
+    h1{
+        font-size: 1.8rem;
+    }
+    b{
+        font-size: 2.7rem;
+        font-weight: normal;
+    }
+    .main-introl-para{
+        text-align: justify;
+    }
+    .inner-color-div{
+        margin-top: 10px;
+    }
+    .scrolling-div{
+        height: 50vh; 
+        width: 350px; 
+        margin-left: 0px;
+    }
+    .bar-div{
+        height: 50vh !important;
+    }
+} 
+@media (min-width: 1366px) {  
+    .first-col{
+        border-right: 1px solid gray;
+    }
+    .scrolling-div{
+        height: 49.7vh; 
+        width: 450px; 
+    }
+    .first-col{
+        border-right: none;
+    }
+    h1{
+        font-size: 2.5rem;
+    }
+    b{
+        font-size: 3.7rem;
+        font-weight: normal;
+    }
+}
+@media (min-width: 1536px) {  
+    .first-col{
+        border-right: 1px solid gray;
+    }
+}

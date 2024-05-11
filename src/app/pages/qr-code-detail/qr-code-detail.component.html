@@ -1,0 +1,75 @@
+
+<div class="container-fluid cont-width mt-5">
+  <div class="row">
+    <div class="col-12">
+      <span class="float-end">
+        <a routerLink="/generate-QR-code" class="btn btn-lg btn-create">
+          + Generate New QrCode</a
+        >
+      </span>
+    </div>
+  </div>
+
+</div>
+
+
+
+<div class="container-fluid cont-width mt-5" >
+  <div class="border-box p-3" *ngIf="!qrCodes.length">
+    <div class="alert alert-info" role="alert">
+      Sorry No QrCode record found.
+    </div>
+  </div>
+
+  <div class="border-box p-3" *ngFor="let item of qrCodes">
+    <div class="row">
+      <div class="col-lg-4 col-md-4 col-sm-12 col-xsm-12">
+        <div class="p-5 border-right">
+          <!-- <img
+            src={{item?.qrImage}}
+            referrerpolicy="no-referrer"
+            class="img-fluid w-50"
+            alt=""
+            #img
+          /> -->
+           <img #parentQr src="{{CODE_URL}}{{item?.qrImage}}" height="150" width="150">
+
+           <div #valueOfQR style="display: none;">{{item?.qr_name}}</div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-12 col-xsm-12">
+        <div class="border-right p-2">
+          <h4 class="table-head">{{item?.qr_name}}</h4>
+          <P class="link"
+            >Link: &nbsp;&nbsp;&nbsp;&nbsp;
+            <span class="text-dark spani">{{item?.link}}</span>
+          </P>
+          <P class="link"
+            >Created At: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <span class="text-dark spani">{{item.createdAt | date:'medium'}}</span>
+          </P>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-12 col-xsm-12">
+        <br /><br />
+        <a class="btn edit-btn form-control" [routerLink]="['/generate-QR-code/',item._id]">
+          <i class="fa fa-pencil"  aria-hidden="true"></i>&nbsp;&nbsp; Edit
+        </a>
+        <a class="btn edit-btn form-control mt-4 btn-danger" type="btn" (click)="delete(item._id)">
+          <i class="fa-brands fa-readme"></i>&nbsp;&nbsp; Delete
+        </a>
+        <a class="btn edit-btn form-control mt-4" type="btn"   (click)="downloadCodesAsImg(parentQr, valueOfQR)" >
+          <i class="fa fa-download" aria-hidden="true"></i> &nbsp;&nbsp;
+          Download
+        </a>
+        <!-- <button class="btn edit-btn form-control mt-4"  (click)="downloadCodesAsImg(parentQr, parentBar,valueOfQR)">
+          <i class="fa fa-download" aria-hidden="true"></i> &nbsp;&nbsp;
+          Download
+        </button> -->
+
+      </div>
+    </div>
+    <!-- row end -->
+  </div>
+</div>
+

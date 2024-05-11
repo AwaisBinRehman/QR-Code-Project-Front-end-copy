@@ -1,0 +1,62 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-8 col-md-8 col-sm-12 col-xsm-12">
+      <div class="mx-auto text-center p-5 justify-content-center">
+        <h5>INFORMATION ABOUT <b>Barcodi<b class="inner-b">X</b></b>, REGISTER PRODUCTS AND GO LIVE WITH MILLIONS OF  PRODUCTS GLOBALLY</h5> <br>
+        <form class="d-flex form" role="search">
+          <!-- <input class="" type="text" placeholder=""> -->
+          <input class="search__input" type="text" [(ngModel)]="searchQuery" (input)="onSearchInputChange()" name="searchQuery" placeholder="ENTER A BARCODE NUMBER">
+
+
+        </form>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-12 col-12 mt-5" *ngFor="let item of filteredProducts">
+        <!-- ... Your existing product display code ... -->
+      </div>
+      
+      
+      <img src="../assets/mapi3.gif" class="img-fluid map-img" alt="">
+      <!-- <iframe src="https://maps.google.com/maps?q=35.856737, 10.606619&z=15&output=embed" width="1000" height="400" frameborder="0" style="border:0"></iframe> -->
+      <!-- <div  style="width: 100%"><iframe class="shadow-lg" width="100%" height="600" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=topan%20wala%20dera%20ismail%20khan%20kpk%20pakistan+(Right%20Brand%20Asia)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"><a href="https://www.maps.ie/distance-area-calculator.html">measure distance on map</a></iframe></div> -->
+    </div>
+    
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xsm-12 first-col mt-5">
+      <div class="qr-code">
+        <p class="text-center fw-bold" style="color: 3e849e;">SCAN QR CODE</p>
+        <div class="">
+          <img [src]="url"  class="img-fluid qr-img" alt="">
+        </div>
+        
+        <input (change)="onSelectFile($event)" type="file" id="upload" class="btn text-center text-white hvr-bubble-bottom code mt-2" hidden/>
+        <label for="upload">UPLOAD QR CODE</label>
+        <!-- <p class="text-center mt-3">SCAN BARCODE</p> -->
+        <!-- bar code upload  -->
+          <app-uploadbarcode></app-uploadbarcode>
+        <!-- <div class="">
+          <img [src]="imageUrl"  class="img-fluid qr-img" alt="">
+        </div>
+        <input (change)="onSelectFileBar($event)" type="file" id="upload" class="btn text-center text-white hvr-bubble-bottom code mt-2" hidden/> -->
+        <!-- <label for="upload">UPLOAD BARCODE</label> -->
+
+      </div>
+    </div>
+
+<!-- footer  -->
+    <div class="col-12 mt-5">
+      <div class="p-2 footer">SEARCH INFORMATION OF ANY PRODUCT - INSTANTILY!</div>
+        <p class="text-center footer-para">At Barcode Live, just by typing or scan, you can find information <br> for millions of products on the world: photos, name, model, manufacturer and product reviews. <br>
+          with huge datebase of barcodes and product data as well as from retailers and e-commerce sites, <br>
+          we will bring you the most usefull and clearest info on any product you're interested in.
+        </p>
+      <hr class="hr">
+    </div>
+
+    <div class="col-12 mt-4">
+      <div class="p-4 footer text-center">
+          <h5 style="color: #3e849e; font-weight: bold; font-size: 1.4rem;">GENERATE NEW QR CODE <b style="color: #111;">AND LINK DESIRED URL <br>
+              OR REDIRECT NEW URL </b> <a href="#" style="color: #3e849e;"> CLICK HERE</a>  
+          </h5>
+      </div>
+    </div>  
+  </div>
+</div>

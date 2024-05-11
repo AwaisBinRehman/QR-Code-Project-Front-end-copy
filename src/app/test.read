@@ -1,0 +1,106 @@
+import { Component, OnInit } from "@angular/core";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { MatSnackBar } from "@angular/material/snack-bar";
+import { ActivatedRoute, Router } from "@angular/router";
+import { imageURL } from "src/app/core/constants/base.url";
+import { Colours } from "src/app/core/models/colours";
+import { ColourService } from "src/app/core/services/colour.service";
+
+@Component({
+  selector: "app-add-colours",
+  templateUrl: "./add-colours.component.html",
+  styleUrls: ["./add-colours.component.scss"],
+})
+export class AddColoursComponent implements OnInit {
+  colour: Colours;
+  colourform: FormGroup;
+  srcResult: any;
+  file: any;
+  catId: any;
+  constructor(
+    private formbuilder: FormBuilder,
+    private colourService: ColourService,
+    private snakBar: MatSnackBar,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
+
+  ngOnInit(): void {
+    this.createform();
+    this.editform();
+    this.colourService.getcolour().subscribe(
+      (res: any) => {
+        console.log(res["colourList"]);
+        this.colour = res["colourList"];
+      },
+      (err) => this.errorHandler(err, "Failed to get Colours")
+    );
+  }
+  onImagePicked(event: Event) {
+    this.file = (event.target as HTMLInputElement).files[0];
+    this.colourform.patchValue({ colouricon: this.file });
+    this.colourform.get( `http://kidsapis.aasecurityforce.com/uploads/colour/Red.png`
+    ).updateValueAndValidity();
+    console.log(this.file);
+    console.log(this.colourform);
+  }
+
+  onOptionsSelected(event) {
+    console.log(event);
+    this.catId = event.value._id;
+  }
+  onSubmit() {
+
+    const payload = new FormData();
+    payload.append("name", this.colourform.value.name);
+    payload.append("colouricon", this.file);
+    this.colourService.createcolour(payload).subscribe(
+      (data) => {
+        console.log(data);
+        this.snakBar.open(data.message, "success", {
+          duration: 2000,
+        });
+        this.colourform.reset();
+        this.router.navigate(["colours/viewcolours"]);
+        console.log(data);
+      },
+      (err) => this.errorHandler(err, "Failed to Create colours")
+    );
+    // debugger;
+    // console.log(this.Categoryform.value);
+  }
+
+  cancel() {
+    this.router.navigate(["colours/viewcolours"]);
+  }
+  editform() {
+    this.route.params.subscribe((params) => {
+      let id = params.id;
+      if (!id) {
+        return;
+      }
+      this.colourService.getColours(id).subscribe(
+        (Colours: any) => {
+
+          this.colourform.patchValue(Colours.colour);
+          this.colour = Colours.parentId;
+        },
+        (err) => this.errorHandler(err, "Failed to get colour")
+      );
+    });
+  }
+
+  createform() {
+    this.colourform = this.formbuilder.group({
+      name: ["", Validators.required],
+      // parentId: [""],
+    });
+  }
+  private errorHandler(error, message) {
+    console.log(error);
+    this.snakBar.open(message, "Error", {
+      duration: 2000,
+    });
+  }
+}
+

@@ -1,0 +1,31 @@
+main {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+}
+
+#reader {
+          width: 300px;
+          margin-top: 20px;
+}
+
+#result {
+          text-align: center;
+          font-size: 1.5rem;
+}
+
+.read {
+          background-image: url("https://i.ytimg.com/vi/CPrJJojF6bI/hqdefault.jpg") !important;
+          background-repeat: no-repeat !important;
+          background-size: cover !important;
+          color: #111;
+          font-weight: 800;
+          border-top-right-radius: 26px;
+          border-top-left-radius: 40px;
+          border-bottom-left-radius: 40px;
+          border-bottom-right-radius: 40px;
+          /* border-radius: 27px; */
+          box-shadow: inset 0px 19.5px 1px #00080b;
+          padding-top: 10px !important;
+          border-bottom: 20px solid #00080b !important;
+}

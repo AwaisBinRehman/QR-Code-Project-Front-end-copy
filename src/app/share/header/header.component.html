@@ -1,0 +1,21 @@
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xsm-6">
+        <a routerLink="">
+          <img src="../assets/logo1.png" class="img-fluid logo" width="230" alt="">
+        </a>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xsm-6">
+        <div class="float-end d-flex mt-3 account-btn" >
+          <!-- <button routerLink="profile" class="btn  hvr-sweep-to-bottom" *ngIf="isAuth">{{user.applicant_Name}}</button> &nbsp;&nbsp;&nbsp; -->
+          <button class="btn  hvr-sweep-to-bottom" *ngIf="isAuth" (click)="logout()"><i class="fa-solid fa-right-from-bracket"></i> Logout</button> &nbsp;&nbsp;&nbsp;
+          <button class="btn  hvr-sweep-to-bottom" *ngIf="!isAuth" routerLink="login">Login</button> &nbsp;&nbsp;&nbsp;
+          <!-- <button class="btn  hvr-sweep-to-bottom r" *ngIf="!isAuth" routerLink="welcome">Register</button> -->
+          <button class="btn  hvr-sweep-to-bottom r" *ngIf="!isAuth" routerLink="register">Register</button>
+        </div>
+        <!-- <a class="btn   admin-pr float-end mt-2"  routerLink="profile">
+          <img src="../assets/admin.jpg" class="img-fluid admin-img"  alt="">
+        </a> -->
+      </div>
+    </div>
+</div>

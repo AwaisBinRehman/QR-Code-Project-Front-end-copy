@@ -1,0 +1,29 @@
+.user-profile-container {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  }
+  
+  .user-profile-container h2 {
+    color: #333;
+  }
+  
+  .user-profile-info {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .user-profile-info-item {
+    margin-bottom: 10px;
+  }
+  
+  .user-profile-info-item label {
+    font-weight: bold;
+  }
+  
+  .user-profile-info-item span {
+    margin-left: 10px;
+    color: #555;
+  }
+  

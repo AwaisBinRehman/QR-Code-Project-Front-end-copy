@@ -1,0 +1,170 @@
+<div class="container-fluid mt-5 cont-width">
+  <div class="row">
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xsm-12 first-col">
+      <h1 class="main-title">ONLINE BARCODE <b class="sub-title">GENERATOR</b></h1>
+    </div>
+    <div class="col-lg-8 col-md-8 col-sm-12 col-xsm-12">
+      <p class="qr-intro">
+        This online barcode generator demonstrates the capabilities of the
+        TBarCode SDK barcode components. TBarCode simplifies bar code creation
+        in your application - e.g. in C# .NET, VB .NET, Microsoft® ASP.NET, ASP,
+        PHP, Delphi and other programming languages. Test this online
+        barcode-generator without any software installation (Terms of Service)
+        and generate your barcodes right now: EAN, UPC, GS1 DataBar, Code-128,
+        QR Code®, Data Matrix, PDF417, Postal Codes, ISBN, etc.
+      </p>
+    </div>
+    <hr class="hr" />
+  </div>
+</div>
+
+<!-- third section  -->
+
+<div class="container-fluid cont-width mt-5">
+  <div class="row">
+    <div class="col-12">
+      <span class="float-end">
+        <a routerLink="/addproduct" class="btn btn-lg btn-create">
+          + Add New Product</a>
+      </span>
+    </div>
+  </div>
+
+</div>
+<div class="container px-4 mt-3">
+    <div class="border-box p-3" *ngIf="!products?.length">
+      <div class="alert alert-info" role="alert">
+        Sorry, no product records found.
+      </div>
+    </div>
+  <div class="row gx-5">
+    <div class="col-lg-6 col-md-6 col-sm-12 mt-4  " *ngFor="let item of products">
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 mt-3 p-3">
+          <div class="border rounded-4 mb-3 d-flex justify-content-center">
+            <a data-fslightbox="mygalley" class="rounded-4" target="_blank" data-type="image" href="#">
+              <img style="max-width: 100%; max-height: 100vh; margin: auto;" class="rounded-4 fit"
+                src="{{IMAGE_URL}}/product/{{item.productpicture}}" />
+            </a>
+          </div>
+          <!-- <ng-container *ngFor="let icon of item.logo">
+            <a data-fslightbox="mygalley" class="rounded-4" target="_blank" data-type="image" href="#">
+              <img style="max-width: 100%; max-height: 100vh; margin: auto;" class="rounded-4 fit" src="{{icon}}" />
+            </a>
+          </ng-container> -->
+          <label for="" class="fw-bold">Product Detail</label>
+          <p>
+            {{item.Description}}
+          </p>
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 text-center">
+              <input type="radio" name="downloadType" [(ngModel)]="optionCode" value="qrCode+{{item._id}}" />&nbsp;
+              <img #parentQr src="{{QRCODE_URL}}{{item.qrCode}}" id="qrCode+{{item._id}}" height="150" width="150">
+              <div #valueOfQR style="display: none;">{{item._id}}</div>
+            </div> <br>
+              <div class="col-lg-12 col-md-12 col-sm-12 text-center">
+                <input type="radio" name="downloadType" [(ngModel)]="optionCode" value="barCode+{{item._id}}" />&nbsp;
+                <app-create-barcode #parentBar [barcodeType]="item.selectedBarcodeType" [barcode]="item.barcode" [id]="'barCode'+item._id" [classList]="['barCode'+item._id]" class="mt-4"></app-create-barcode>
+              </div>
+          </div>
+        </div>
+        <!--PRODUCT DETAIL SIDE-->
+        <div class="col-lg-6 col-md-6 col-sm-12 p-3">
+          <div class="p-3 border-right">
+            <div class="row">
+
+              <dt class="col-3">Product Name:</dt>
+              <dd class="col-9 text-end">{{item.product_name}}</dd>
+  
+              <dt class="col-3">Price:</dt>
+              <dd class="col-9 text-end">{{item.AvgPrice}}</dd>
+  
+              <dt class="col-3">Model:</dt>
+              <dd class="col-9 text-end">{{item.Model}}</dd>
+  
+              <dt class="col-3">ManuFacture:</dt>
+              <dd class="col-9 text-end">{{item.Manufacturer}}</dd>
+  
+              <dt class="col-3">Feature:</dt>
+              <dd class="col-9 text-end">{{item.Feature}}</dd>
+  
+              <dt class="col-3">Specficaiton:</dt>
+              <dd class="col-9 text-end">{{item.specfication}}</dd>
+  
+              <dt class="col-3">Type:</dt>
+              <dd class="col-9 text-end">{{item.type}}</dd>
+  
+              <dt class="col-3">Currency Unit:</dt>
+              <dd class="col-9 text-end">{{item.CurrencyUnit}}</dd>
+  
+              <dt class="col-3">Brand:</dt>
+              <dd class="col-9 text-end">{{item.brand}}</dd>
+  
+              <dt class="col-3 label">Size:</dt>
+              <dd class="col-9 text-end">{{item.size}}</dd>
+  
+              <!-- <dt class="col-3 label">Bar Code:</dt>
+                <dd class="col-9 text-end">{{item.barcode}}</dd> -->
+              <br>
+              <div class="row">
+                <div class="text-center col-lg-6 col-md-6 col-sm-12">
+                  <a class="btn edit-btn mt-4 ms-2" [routerLink]="['/products/update/',item._id]">
+                    <i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;&nbsp; Edit
+                  </a>
+                </div>
+                <div class="text-center col-lg-6 col-md-6 col-sm-12">
+                  <a class="btn edit-btn mt-4 ms-4" [routerLink]="['/products/details/',item._id]">
+                    <i class="fa-brands fa-readme"></i>&nbsp;&nbsp; Detail
+                  </a>
+                </div>
+                <div class="text-center col-lg-12 col-md-12 col-sm-12">
+                  <button class="btn edit-btn mt-4 ms-3" (click)="downloadCodesAsImg(parentQr,valueOfQR)">
+                    <i class="fa fa-download" aria-hidden="true"></i> &nbsp;&nbsp;
+                    Download
+                  </button>
+                </div>
+              </div>
+  
+  
+  
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+<!--=========================
+    ## Pagination
+==========================-->
+<div class="container-fluid cont-width mt-4">
+  <div class="row">
+    <div class="col-12">
+      <nav aria-label="Page navigation example">
+        <ul class="pagination">
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>

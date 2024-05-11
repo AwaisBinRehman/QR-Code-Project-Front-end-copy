@@ -1,0 +1,95 @@
+.btn{
+    margin-left: 30px;
+    background: #555555;
+    border: 1px solid #555555;
+    font-weight: 400;
+    border-radius: 0;
+    color: #fff;
+    transition: 0.5s;
+}
+.btn:hover{
+    border-radius: 30px;
+    color: #fff;
+}
+img{
+    width: 30px;
+    margin-left: 60px;
+}
+.share{
+    font-size: 2rem;
+    padding-top: 5px;
+    font-weight: normal;
+}
+
+
+/*========================
+### Responsive Code ###
+=========================*/
+
+@media (min-width: 280px) { 
+    .btn{
+        margin-top: 10px;
+        width: 100%;
+        margin-left: 3%;
+    }
+    .share{
+        font-size: 1.6rem;
+        text-align: center;
+    }
+    img{
+        width: 30px;
+        margin-left: 23px !important;
+    }
+ }
+@media (min-width: 360px) { 
+    .btn{
+        margin-top: 10px;
+        width: 100%;
+        margin-left: 0%;
+    }
+    .share{
+        font-size: 1.6rem;
+        text-align: center;
+    }
+    img{
+        width: 30px;
+        margin-left: 40px !important;
+    }
+
+ }
+@media (min-width: 640px) { 
+    img{
+        width: 30px;
+        margin-left: 60px;
+    }
+    .share{
+        display: none;
+    }
+    .sm-heading{
+        display: inherit;
+    }
+ }
+@media (min-width: 768px) {  }
+@media (min-width: 1024px) { 
+    .sm-heading{
+        display: none;
+    }
+    .share{
+        display: inherit;
+    }
+    .btn{
+        font-size: 0.8rem;
+    }
+ }
+@media (min-width: 1280px) { 
+    .sm-heading{
+        display: none;
+    }
+    .share{
+        display: inherit;
+    }
+ }
+
+
+@media (min-width: 1366px) {  }
+@media (min-width: 1536px) {  }  

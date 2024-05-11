@@ -1,0 +1,107 @@
+<div class="container-fluid cont-width mt-5" *ngIf="!loggedIn">
+    <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-12">
+            <div class="main-box p-3">
+                <h2>
+                    DYNAMIC QR CODE <br>
+                    <h1>GENERATOR</h1>
+                </h2>
+                <div class="box p-5">
+                    <p>Company <br> Advertise <br> Banner</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-5 col-md-5 col-sm-12">
+                <input type="text" (input)="newQR()" [(ngModel)]="qrInputValues" class="form-control url p-2" placeholder="URL LINK PASTE HERE OR TEXT "> <br>
+                <p class="select-file">SELECT DOWNLOAD FILE</p>
+                <div class="boxi p-3">
+                    &nbsp;&nbsp;<input (change)="newQR()" [(ngModel)]="logoType" name="file_type" value="" type="radio"> &nbsp;&nbsp; <span class="span-text">Text</span> <br>
+                    &nbsp;&nbsp;<input (change)="newQR()" [(ngModel)]="logoType" name="file_type" value="web" type="radio"> &nbsp;&nbsp; <span class="span-text">WEBSITE</span> <br>
+                    &nbsp;&nbsp;<input (change)="newQR()" [(ngModel)]="logoType" name="file_type" value="yt" type="radio"> &nbsp;&nbsp; <span class="span-text">YOUTUBE</span> <br>
+                    &nbsp;&nbsp;<input (change)="newQR()" [(ngModel)]="logoType" name="file_type" value="fb" type="radio"> &nbsp;&nbsp; <span class="span-text">FACEBOOK</span> <br>
+                    &nbsp;&nbsp;<input (change)="newQR()" [(ngModel)]="logoType" name="file_type" value="insta" type="radio"> &nbsp;&nbsp; <span class="span-text">INSTAGRAM</span> <br>
+                    &nbsp;&nbsp;<input (change)="newQR()" [(ngModel)]="logoType" name="file_type" value="lnkin" type="radio"> &nbsp;&nbsp; <span class="span-text">LINKEDIN</span> <br>
+                    &nbsp;&nbsp;<input (change)="newQR()" [(ngModel)]="logoType" name="file_type" value="sk" type="radio"> &nbsp;&nbsp; <span class="span-text">SKYPE</span> <br>
+                    &nbsp;&nbsp;<input (change)="newQR()" [(ngModel)]="logoType" name="file_type" value="tw" type="radio"> &nbsp;&nbsp; <span class="span-text">TWITTER</span> <br>
+                    &nbsp;&nbsp;<input (change)="newQR()" [(ngModel)]="logoType" name="file_type" value="wt" type="radio"> &nbsp;&nbsp; <span class="span-text">WHATSAPP</span> <br>
+                    &nbsp;&nbsp;<input (change)="newQR()" [(ngModel)]="logoType" name="file_type" value="em" type="radio"> &nbsp;&nbsp; <span class="span-text">EMAIL</span> <br>
+                </div> <br>
+
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-12">
+          <div class="boxi-2 p-2 text-center">
+            <div #canvas></div>
+            <div #valueOfQR>{{qrInputValues}}</div><br>
+          </div> <br>
+          <div class="text-center downlod-btn">
+              <button class="fullButton download btn form-control btn-danger" (click)="saveAsImage(canvas,valueOfQR)">
+                <span>Download</span>
+              </button>
+          </div> <br>
+
+
+        </div>
+    </div>
+</div>
+
+
+<div class="container-fluid cont-width mt-5" *ngIf="loggedIn">
+  <div class="row">
+      <div class="col-lg-4 col-md-4 col-sm-12">
+
+        <form [formGroup]="form" (ngSubmit)="isEdit? update() : submit()">
+          <div class="form-group">
+            <label for="url">Name</label>
+            <input
+                formControlName="qrName"
+                id="url"
+                type="text"
+                class="form-control"
+                placeholder="Give name to your QR">
+            <div *ngIf="f.qrName.touched && f.qrName.invalid" class="alert alert-danger">
+                <div *ngIf="f.qrName.errors?.required">Name is required.</div>
+                <div *ngIf="f.qrName.errors?.maxLength">Qr Code name must be less than 30 char.</div>
+            </div>
+        </div>
+          <div class="form-group">
+              <label for="url">Targeted Url</label>
+              <input
+                  formControlName="targetedUrl"
+                  id="url"
+                  type="text"
+                  class="form-control"
+                  placeholder="https://google.com">
+              <div *ngIf="f.targetedUrl.touched && f.targetedUrl.invalid" class="alert alert-danger">
+                  <div *ngIf="f.targetedUrl.errors?.required">URL is required.</div>
+                  <div *ngIf="f.targetedUrl.errors?.pattern">Please enter valid url.</div>
+              </div>
+          </div>
+
+          <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Generate Qr Code</button>
+      </form>
+
+
+
+<!--
+        <label for="nameqr">Name</label>
+        <input id="nameqr" type="text" [(ngModel)]="qrName" class="form-control url p-2" placeholder="URL LINK PASTE HERE OR TEXT "> <br>
+        <label for="qrUrl">Targeted Url</label>
+        <input type="text" [(ngModel)]="targetedUrl" class="form-control url p-2" placeholder="URL LINK PASTE HERE OR TEXT "> <br>
+
+<button class="btn btn-success mt-4 px-2" (click)="submit()">Generate Qr Code</button> -->
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-12">
+        <div *ngIf="!generatedQr">
+          <p>Your Generated QR Code will be displayed here</p>
+        </div>
+        <div *ngIf="generatedQr" class="text-center downlod-btn">
+          <img [src]="generatedQr" alt="qr code"width="200px" height="200px" class="my-3">
+            <!-- <button class="fullButton download btn form-control btn-danger" (click)="download(canvas,valueOfQR)">
+              <span>Download</span>
+            </button> -->
+        </div> <br>
+
+
+      </div>
+  </div>
+</div>

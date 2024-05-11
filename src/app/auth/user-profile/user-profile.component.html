@@ -1,0 +1,258 @@
+<div class="container rounded bg-white mt-5 mb-5">
+  <div *ngIf="user">
+    <div class="row">
+      <div class="col-md-3 border-right">
+                <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                          <img class="rounded-circle mt-5" width="150px" src="{{user.upload_profile}}">
+                          <span class="font-weight-bold">{{ user.applicant_Name }}</span>
+                          <span class="font-weight-bold">{{ user.applicant_Designation }}</span>
+                          <span class="text-black-50">{{ user.email }}</span>
+                          <span></span>
+                </div>
+      </div>
+      <div class="col-md-5 border-right">
+                <div class="p-3 py-5">
+                          <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <h4 class="text-right">Company Profile</h4>
+                          </div>
+                          <div class="row mt-2">
+                                    <div class="col-md-6">
+                                      <label class="labels">Business Title</label>
+                                              <p class="bs-title">{{user.btitle}}</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                      <label class="labels">Country</label>
+                                              <p class="bs-title">{{user.country}}</p>
+                                    </div>
+                          </div>
+                          <div class="row mt-3">
+                                    <div class="col-md-6"><label class="labels">Office Address </label>
+                                              <p class="bs-title">{{user.office_Address}}</p>
+                                    </div>
+                                    <div class="col-md-6"><label class="labels">Applicant Name </label>
+                                              <p class="bs-title">{{ user.applicant_Name }}</p>
+                                    </div>
+                                    <div class="col-md-6"><label class="labels">Father Name </label>
+                                              <p class="bs-title">{{user.applicant_fName}}</p>
+                                    </div>
+                                    <div class="col-md-6"><label class="labels">Contact Number</label>
+                                              <p class="bs-title">{{user.contact_Number}}</p>
+                                    </div>
+                                    <div class="col-md-6"><label class="labels">Email Address </label>
+                                              <p class="bs-title">{{ user.email }}</p>
+                                    </div>
+                                    <div class="col-md-6"><label class="labels">Applicant’s Designation </label>
+                                              <p class="bs-title">{{ user.applicant_Designation }}</p>
+                                    </div>
+                                    <div class="col-md-6"><label class="labels">Applicant’s Mother Name</label>
+                                              <p class="bs-title">{{user.applicant_MotherName}}</p>
+                                    </div>
+                                    <div class="col-md-6"><label class="labels">Applicant’s Birthplace</label>
+                                              <p class="bs-title">{{user.applicant_Birthplace}}</p>
+                                    </div>
+                                    <div class="col-md-6"><label class="labels">Individual Business</label>
+                                              <p class="bs-title">{{ user.Individual_Business_Partnership }}</p>
+                                    </div>
+
+                          </div>
+
+                </div>
+      </div>
+      <div class="col-md-4">
+                <div class="p-3 py-5">
+                          <div class="d-flex justify-content-between align-items-center experience">
+                                    <span>Edit Profile</span>
+                                   <!-- <button (click)="editProfile()" class="btn"> </button> -->
+                                   <button (click)="editProfile()" type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal"><span class="border px-3 p-1 add-experience"><i class="fa fa-plus"></i>&nbsp;Edit Profile</span></button>
+                          </div><br>
+                          <div class="certificate mt-4 ">
+                                    <span class="com-name text-center">Company Certificate </span>
+                                    <img src="{{ user.upload_certificate }}" alt="Certificate Image">
+                          </div>               
+                </div>
+      </div>
+</div>
+  </div>
+
+</div>
+
+<br><br><br><br><br><br><br>
+
+
+
+<!-- model form start here -->
+
+<!-- Modal -->
+<div class="container-fluid eidt-model">
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="updatepr">Update Profile</h2>
+        </div>
+        <div class="modal-body">
+          <form *ngIf="editing">
+            <label for="btitle">Business Title:</label>
+            <input type="text" id="btitle" name="btitle" class="form-control" [(ngModel)]="updatedUser.btitle"><br>
+            
+            <label for="country">Country:</label>
+            <input type="text" id="country" class="form-control" name="country" [(ngModel)]="updatedUser.country"><br>
+            
+            <label for="officeAddress">office_Address:</label>
+            <input type="text" id="officeAddress" class="form-control" name="officeAddress" [(ngModel)]="updatedUser.office_Address"><br>
+            
+            <label for="applicantName">Applicant Name:</label>
+            <input type="text" id="applicantName" class="form-control" name="applicantName" [(ngModel)]="updatedUser.applicant_Name"><br>
+        
+            <label for="applicantfName">Applicant Father Name:</label>
+            <input type="text" id="applicantfName" class="form-control" name="applicantfName" [(ngModel)]="updatedUser.applicant_fName"><br>
+            
+            <label for="contactNumber">Contact Number:</label>
+            <input type="text" id="contactNumber" class="form-control" name="contactNumber" [(ngModel)]="updatedUser.contact_Number"><br>
+        
+            <label for="applicantDesignation">Applicant_Designation:</label>
+            <input type="text" id="applicantDesignation" class="form-control" name="applicantDesignation" [(ngModel)]="updatedUser.applicant_Designation"><br>
+            
+            <label for="applicant_MotherName">Applicant_MotherName:</label>
+            <input type="text" id="applicant_MotherName" class="form-control" name="applicant_MotherName" [(ngModel)]="updatedUser.applicant_MotherName"><br>
+            
+            <label for="applicantBirthplace">Applicant Birthplace:</label>
+            <input type="text" id="applicantBirthplace" class="form-control" name="applicantBirthplace" [(ngModel)]="updatedUser.applicant_Birthplace"><br>
+            
+            <label for="IndividualBusinessPartnership">Individual Business Partnership:</label>
+            <input type="text" id="IndividualBusinessPartnership" class="form-control" name="IndividualBusinessPartnership" [(ngModel)]="updatedUser.Individual_Business_Partnership"><br>
+            
+            <label for="uploadprofile">upload_profile:</label>
+            <input type="file"  class="form-control" (change)="onFileSelected($event)"><br>
+        
+            <label for="uploadcertificate">upload_certificate:</label>
+            <input type="file" class="form-control" (change)="onFileSelectedCertificate($event)"><br>
+            
+            <button (click)="saveProfile()" class="btn btn-primary">Save Profile</button>
+          <button type="button" class="btn btn-danger ms-2" data-bs-dismiss="modal">Close</button>
+
+          </form>
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Update user profile  -->
+<!-- <div *ngIf="user">
+  <h1>User Profile</h1>
+
+  <div *ngIf="!editing">
+    <p><strong>B Title:</strong>{{user.btitle}}</p>
+    <p><strong>country:</strong>{{user.country}}</p>
+    <p><strong>address:</strong>{{user.office_Address}}</p>
+    <p><strong>Name:</strong>{{user.applicant_Name}}</p>
+    <p><strong>email:</strong>{{user.email}}</p>
+    <p><strong>f.name:</strong> {{user.applicant_fName}}"</p>
+    <p><strong>c number:</strong> {{ user.contact_Number }}</p>
+    <p><strong>Designation:</strong> {{ user.applicant_Designation }}</p>
+    <p><strong>M. name:</strong> {{ user.applicant_MotherName }}</p>
+    <p><strong>birthday :</strong> {{ user.applicant_Birthplace }}</p>
+    <p><strong>partnership:</strong>{{ user.Individual_Business_Partnership }}</p>
+
+    <button >Edit Profile</button>
+  </div>
+
+  <form *ngIf="editing">
+    <label for="btitle">Business Title:</label>
+    <input type="text" id="btitle" name="btitle" [(ngModel)]="updatedUser.btitle"><br>
+    
+    <label for="country">Country:</label>
+    <input type="text" id="country" name="country" [(ngModel)]="updatedUser.country"><br>
+    
+    <label for="officeAddress">office_Address:</label>
+    <input type="text" id="officeAddress" name="officeAddress" [(ngModel)]="updatedUser.office_Address"><br>
+    
+    <label for="applicantName">Applicant Name:</label>
+    <input type="text" id="applicantName" name="applicantName" [(ngModel)]="updatedUser.applicant_Name"><br>
+
+    <label for="applicantfName">Applicant Father Name:</label>
+    <input type="text" id="applicantfName" name="applicantfName" [(ngModel)]="updatedUser.applicant_fName"><br>
+    
+    <label for="contactNumber">Contact Number:</label>
+    <input type="text" id="contactNumber" name="contactNumber" [(ngModel)]="updatedUser.contact_Number"><br>
+
+    <label for="applicantDesignation">Applicant_Designation:</label>
+    <input type="text" id="applicantDesignation" name="applicantDesignation" [(ngModel)]="updatedUser.applicant_Designation"><br>
+    
+    <label for="applicant_MotherName">Applicant_MotherName:</label>
+    <input type="text" id="applicant_MotherName" name="applicant_MotherName" [(ngModel)]="updatedUser.applicant_MotherName"><br>
+    
+    <label for="applicantBirthplace">Applicant Birthplace:</label>
+    <input type="text" id="applicantBirthplace" name="applicantBirthplace" [(ngModel)]="updatedUser.applicant_Birthplace"><br>
+    
+    <label for="IndividualBusinessPartnership">Individual Business Partnership:</label>
+    <input type="text" id="IndividualBusinessPartnership" name="IndividualBusinessPartnership" [(ngModel)]="updatedUser.Individual_Business_Partnership"><br>
+    
+    <label for="uploadprofile">upload_profile:</label>
+    <input type="file"  class="form-control" (change)="onFileSelected($event)"><br>
+
+    <label for="uploadcertificate">upload_certificate:</label>
+    <input type="file" class="form-control" (change)="onFileSelectedCertificate($event)"><br>
+    
+    <button (click)="saveProfile()">Save Profile</button>
+    <button (click)="cancelEdit()">Cancel</button>
+  </form>
+</div> -->

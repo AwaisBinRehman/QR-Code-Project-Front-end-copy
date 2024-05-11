@@ -1,0 +1,103 @@
+/* background-color: #989898; */
+/* background: rgb(167, 167, 167); */
+
+.cont-widht{
+          width: 90%;
+        }
+        h2{
+          text-align: center;
+          font-size: 2rem;
+          color: #111;
+          font-weight: normal;
+          margin-top: 20px;
+        }
+        p{
+          text-align: justify;
+          color: #111;
+          font-size: 1.2rem;
+        }
+        .register-div{
+          background-color: rgb(27, 27, 76);
+          height: 50px;
+        }
+        .register-div h4{
+          font-weight: normal;
+          font-size: 1.7rem;
+          color: #fff;
+          text-align: center;
+          margin-top: 4px;
+        }
+        .register-div-2{
+          background: rgb(167, 167, 167);
+        
+        }
+        .register-div-2 h4{
+          color: #fff;
+          font-size: 1.7rem;
+          margin-top: 10px;
+          margin-left: 20px;
+          font-weight: 700;
+        }
+        h5{
+          font-weight: 300;
+          color: #111;
+          font-size: 1.8rem;
+          margin-left: 30px;
+        }
+        .border-form{
+          /* border-top: 1px solid rgb(27, 27, 76); */
+          border-top: 2px solid rgb(167, 167, 167);
+          border-left: 2px solid rgb(167, 167, 167);
+          box-shadow: 6px 6px 6px 1px rgba(167, 167, 167, 0.572);
+        
+        }
+        input{
+          border-radius: 0;
+          padding: 8px;
+        }
+        select{
+          padding: 8px !important;
+          border-radius: 0 !important;
+          margin-top: -1px;
+        }
+        
+        .box img{
+          width: 100%;
+        }
+        
+        input::placeholder{
+          font-size: 0.8rem;
+          color: rgb(167, 167, 167);
+        }
+        .input-group-text{
+          background-color: rgb(27, 27, 76);
+          color: #fff;
+          border-radius: 0;
+        }
+        .text-2{
+          background-color: transparent;
+          color: #000;
+        }
+        .pass-input{
+          background-color: rgb(167, 167, 167);
+        }
+        .verify-code{
+          background-color: #3b3b3b;
+        }
+        .submit-btn{
+          background-color: #3b3b3b;
+          color: #fff;
+          border-radius: 0;
+        }
+        span{
+          font-size: 1rem;
+          font-weight: 400;
+          color: black;
+        }
+        
+        
+        
+        
+        
+        
+        

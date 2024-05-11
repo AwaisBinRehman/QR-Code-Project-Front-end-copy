@@ -1,0 +1,70 @@
+<div class="container-fluid mt-5 cont-width">
+  <div class="row">
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xsm-12 first-col">
+      <h1>ONLINE BARCODE <b>GENERATOR</b></h1>
+    </div>
+    <div class="col-lg-8 col-md-8 col-sm-12 col-xsm-12">
+      <p class="qr-intro">
+        This online barcode generator demonstrates the capabilities of the
+        TBarCode SDK barcode components. TBarCode simplifies bar code creation
+        in your application - e.g. in C# .NET, VB .NET, Microsoft® ASP.NET, ASP,
+        PHP, Delphi and other programming languages. Test this online
+        barcode-generator without any software installation (Terms of Service)
+        and generate your barcodes right now: EAN, UPC, GS1 DataBar, Code-128,
+        QR Code®, Data Matrix, PDF417, Postal Codes, ISBN, etc.
+      </p>
+    </div>
+    <hr class="hr" />
+  </div>
+</div>
+
+<!-- third section  -->
+<h2 class="text-center title">Product Details</h2>
+<div class="container-fluid cont-width mt-5" *ngIf="product">
+  <div class="border-box p-3">
+    <div class="row border p-3">
+      <div class="col-lg-4 col-md-4 col-sm-12 col-xsm-12 ">
+        <img style="max-width: 100%; max-height: 100vh; margin: auto;" class="rounded-4 fit"
+        src="{{IMAGE_URL}}/product/{{product.productpicture}}" />
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-12">
+            <img src="{{QRCODE_URL}}{{product.qrCode}}" height="150" width="150">
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12 mt-4">
+              <app-create-barcode [barcodeType]="product?.selectedBarcodeType" [barcode]="product?.barcode" class=""></app-create-barcode>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-12 col-xsm-12">
+        <div class="border-right p-2">
+          <h4 class="table-head">{{product?.product_name}}</h4>
+          <p class="link">Model: <span class="text-dark spani">{{product?.Model}}</span></p>
+          <p class="link">Manufacturer: <span class="text-dark spani">{{product?.Manufacturer}}</span></p>
+          <p class="link">Avg Price: <span class="text-dark spani">{{product?.AvgPrice}}</span></p>
+          <p class="link">Currency Unit: <span class="text-dark spani">{{product?.CurrencyUnit}}</span></p>
+          <p class="link">Specfication: <span class="text-dark spani">{{product?.specfication}}</span></p>
+          <p class="link">Features: <span class="text-dark spani">{{product?.Feature}}</span></p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-12 col-xsm-12">
+        <label for="" class="fw-bold">Description</label>
+        <p>{{product?.Description}}</p>
+        <P class="link">Type: <span class="text-dark spani">{{product?.type}}</span></P>
+        <P class="link">Currency Unit: <span class="text-dark spani">{{product?.CurrencyUnit}}</span></P>
+        <P class="link">Brand: <span class="text-dark spani">{{product?.brand}}</span></P>
+        <P class="link">Size: <span class="text-dark spani">{{product?.size}}</span></P>
+      </div>
+
+      <div class="row">
+        <div class="col-12 text-end">
+            <span>
+                <a routerLink="/products/all" class="hvr-sweep-to-bottom">Go Back</a>
+            </span>
+
+        </div>
+    </div>
+    </div>
+    <!-- row end -->
+  </div>
+  <!-- main border box div end -->
+</div>

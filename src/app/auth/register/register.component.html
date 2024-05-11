@@ -1,0 +1,531 @@
+<div class="login-page">
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 col-lg-12 col-12">
+      <h2>REGISTER FOR RIGHT BRAND ASIA FOR PRODUCTS</h2>
+      <p>Register with RIGHT BRAND ASIA to get RBA barcode number for your products on renewal based subscription. The
+        barcode
+        /QR code subscription fee is based on the company's turnover, the number of barcodes/QR codes, & the
+        subscription period.
+        When choosing the number of barcodes to register, consider your current & future requirements for barcodes. Your
+        barcode
+        subscription includes access to our data cart service (base version only) which allows you to allocate barcode
+        numbers, link /
+        relink QR codes and manage all your product data.
+      </p>
+      <div class="p-1 register-div shadow">
+        <h4>REGISTRATION</h4>
+      </div> <br>
+    </div>
+  </div>
+</div>
+  <div class="container-fluid main-container">
+    <div class="row">
+      <div class="col-lg-4 col-md-4 col-sm-12 left-img">
+        <img class="img-fluid" src="/assets/signup.png" alt="">
+      </div>
+      <div class="col-lg-8 col-md-8 col-sm-12 ">
+        <div class="log-container mt-3 p-3">
+          <h2 class="title-main">Creat New Account</h2>
+          <form class="row g-3 mt-3 border-form p-3" [formGroup]="registerForm" (ngSubmit)="onSubmit()" novalidate
+            enctype="multipart/form-data">
+
+            <div class="col-md-6">
+              <span class="input-group-text" id="basic-addon1">Upload Profile</span>
+              <div class="input-group">
+                <div class="avatar-upload">
+                  <ng-container *ngIf="!iconPreview">
+                    <div class="avatar-edit">
+                      <input id="imageUpload" formControlName='upload_profile' (change)="onFileSelect($event)"
+                        accept="image/*" [ngClass]="{'is-invalid':submitted &&  fc.upload_profile.errors}" type="file">
+                      <label for="imageUpload"></label>
+                      <div class="invalid-feedback" *ngIf="fc.upload_profile.errors">
+                        <div *ngIf="fc.upload_profile.errors?.required">Profile image is required</div>
+                      </div>
+                    </div>
+                  </ng-container>
+                  <div class="avatar-preview" *ngIf="iconPreview">
+                    <div id="imagePreview">
+                      <img [src]="iconPreview" alt="Profile Icon Preview">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <span class="input-group-text" id="basic-addon1">Choose Country</span>
+              <select class="form-select" (change)="changeCountry($event)" aria-label="Default select country"
+                formControlName='country'>
+                <option value="" selected disabled>Please Select Country</option>
+                <option value="pakistan">Pakistan</option>
+                <option value="canada">Canada</option>
+                <option value="uk">UK</option>
+              </select>
+              <div class="invalid-feedback" [ngClass]="fc.country.errors">
+                <div *ngIf="fc.country.errors?.required">Please select country</div>
+              </div>
+            </div>
+            <br><br><br><br>
+            <div class="col-md-12">
+              <span class="input-group-text" id="basic-addon1">BUSINESS TITLE</span>
+              <input formControlName='btitle' type="text" class="form-control" id="title"
+                placeholder="Type Business Title" [ngClass]="{'is-invalid':submitted && fc.btitle.errors}">
+
+              <div class="invalid-feedback" *ngIf="fc.btitle.errors">
+                <div *ngIf="fc.btitle.errors?.required">Business Title is required</div>
+              </div>
+            </div>
+
+
+
+
+
+            <div class="col-12">
+              <div class="input-group">
+                <span class="input-group-text" id="basic-addon1">Office Address</span>
+                <input formControlName='office_Address' [ngClass]="{'is-invalid':submitted && fc.office_Address.errors}"
+                  type="text" class="form-control" placeholder="Office Address">
+                <div class="invalid-feedback" *ngIf="fc.office_Address.errors">
+                  <div *ngIf="fc.office_Address.errors?.required">Office Address is required.</div>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="col-12">
+              <div class="input-group">
+                <span class="input-group-text text-2 w-50" id="basic-addon1">Applicant Name</span>
+                <input formControlName='applicant_Name' [ngClass]="{'is-invalid':submitted && fc.applicant_Name.errors}"
+                  type="text" class="form-control" placeholder="Applicant Name ">
+                <div class="invalid-feedback" *ngIf="fc.applicant_Name.errors">
+                  <div *ngIf="fc.applicant_Name.errors?.required">Applicant name is required.</div>
+                </div>
+
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="input-group">
+                <span class="input-group-text text-2 w-50" id="basic-addon1">Father Name </span>
+                <input formControlName='applicant_fName'
+                  [ngClass]="{'is-invalid':submitted &&  fc.applicant_fName.errors}" type="text" class="form-control"
+                  placeholder="Father Name">
+
+                <div class="invalid-feedback" *ngIf="fc.applicant_fName.errors">
+                  <div *ngIf="fc.applicant_fName.errors?.required">Father name is required</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="input-group">
+                <span class="input-group-text text-2 w-50" id="basic-addon1">Contact Number</span>
+                <input formControlName='contact_Number' type="number"
+                  [ngClass]="{'is-invalid':submitted &&  fc.contact_Number.errors}" class="form-control"
+                  placeholder="Contact Number">
+                <div class="invalid-feedback" *ngIf="fc.contact_Number.errors">
+                  <div *ngIf="fc.contact_Number.errors?.required">Contact number is required</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="input-group">
+                <span for="floatingInput" class="input-group-text text-2 w-50" id="basic-addon1">Email Address</span>
+                <input formControlName='' type="email" class="form-control" id="floatingInput"
+                  placeholder="name@example.com" formControlName="email" class="form-control"
+                  [ngClass]="{ 'is-invalid':submitted && fc.email.errors }" id="inputEmail4">
+
+                <div class="invalid-feedback" *ngIf="fc.email.errors" class="invalid-feedback">
+                  <div *ngIf="fc.email.errors?.required">Email is required</div>
+                  <div *ngIf="fc.email.errors?.email">Email must be a valid email address</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="input-group">
+                <span class="input-group-text text-2 w-50" id="basic-addon1">Applicant’s Designation</span>
+                <input formControlName='applicant_Designation' type="designation" class="form-control"
+                  placeholder="Applicant’s Designation"
+                  [ngClass]="{'is-invalid':submitted &&  fc.applicant_Designation.errors}">
+
+                <div class="invalid-feedback" *ngIf="fc.applicant_Designation.errors">
+                  <div *ngIf="fc.applicant_Designation.errors?.required">Contact number is required</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="input-group">
+                <span class="input-group-text text-2 w-50" id="basic-addon1">Applicant’s Mother Name <sub>( Security
+                    Question )</sub> </span>
+                <input formControlName='applicant_MotherName'
+                  [ngClass]="{'is-invalid':submitted &&  fc.applicant_MotherName.errors}" type="text"
+                  class="form-control" placeholder="Applicant’s Mother Name Security Question ">
+                <div class="invalid-feedback" *ngIf="fc.applicant_MotherName.errors">
+                  <div *ngIf="fc.applicant_MotherName.errors?.required">Mother name is required</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="input-group">
+                <span class="input-group-text text-2 w-50" id="basic-addon1">Applicant’s Birthplace <sub>( Security
+                    Question )</sub> </span>
+                <input formControlName='applicant_Birthplace'
+                  [ngClass]="{'is-invalid':submitted &&  fc.applicant_Birthplace.errors}" type="text"
+                  class="form-control" placeholder="Applicant’s Birthplace Security Question">
+                <div class="invalid-feedback" *ngIf="fc.applicant_Birthplace.errors">
+                  <div *ngIf="fc.applicant_Birthplace.errors?.required">Applicant Birthplace is required</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="input-group">
+                <span class="input-group-text text-2 w-50" id="basic-addon1">Individual Business or Partnership</span>
+                <input formControlName='Individual_Business_Partnership'
+                  [ngClass]="{'is-invalid':submitted &&  fc.Individual_Business_Partnership.errors}" type="text"
+                  class="form-control" placeholder="Individual Business or Partnership">
+                <div class="invalid-feedback" *ngIf="fc.Individual_Business_Partnership.errors">
+                  <div *ngIf="fc.Individual_Business_Partnership.errors?.required">Individual Business Partnership field
+                    is required</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="input-group">
+                <span class="input-group-text text-2 w-50" id="basic-addon1"> <b class="text-primary"> UPLOAD </b>&nbsp;
+                  Company, Firm etc Reg Certificate </span>
+                <input multiple formControlName='upload_certificate' (change)="onCertifSelect($event)" accept="image/*"
+                  [ngClass]="{'is-invalid':submitted &&  fc.upload_certificate.errors}" type="file" class="form-control"
+                  placeholder="UPLOAD Company, Firm etc Reg Certificate">
+                <div class="invalid-feedback" *ngIf="fc.upload_certificate.errors">
+                  <div *ngIf="fc.upload_certificate.errors?.required">Certificate image is required</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="input-group">
+                <span class="input-group-text text-2 w-50" id="basic-addon1"> <b class="text-primary"> UPLOAD </b>&nbsp;
+                  Company, Firm etc Reg Logo </span>
+                <input multiple formControlName='logo' (change)="onLogoSelect($event)" accept="image/*"
+                  [ngClass]="{'is-invalid':submitted &&  fc.logo.errors}" type="file" class="form-control"
+                  placeholder="UPLOAD Company, Firm etc Reg Logo">
+                <div class="invalid-feedback" *ngIf="fc.logo.errors">
+                  <div *ngIf="fc.logo.errors?.required">Logo images is required</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="input-group">
+                <span class="input-group-text pass-input" id="basic-addon1">Password </span>
+                <input formControlName='password' type="password" class="form-control"
+                  [ngClass]="{'is-invalid':submitted &&  fc.password.errors}" placeholder="Please enter Password">
+                <div class="invalid-feedback" *ngIf="fc.password.errors">
+                  <div *ngIf="fc.password.errors?.required">Password is required</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="input-group">
+                <span class="input-group-text pass-input" id="basic-addon1">Confirm Password </span>
+                <input formControlName='cpassword' type="password"
+                  [ngClass]="{'is-invalid':submitted &&  !!fc.cpassword.errors}" class="form-control"
+                  placeholder="Please Confirm Password">
+                <div class="invalid-feedback" *ngIf="!!fc.cpassword.errors">
+                  <div *ngIf="fc.cpassword.errors?.required">Confirm password is required</div>
+                  <div *ngIf="fc.cpassword.errors?.notMatch">Password and confirm password doesn't match.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="row">
+                <div class="col-md-12">
+                  <input formControlName="terms" [ngClass]="{'is-invalid':submitted &&  fc.terms.errors}" required
+                    type="checkbox"> <span> ACCEPT TERM & CONDITIONS </span> <br>
+                  <div class="invalid-feedback" *ngIf="fc.terms.errors">
+                    <div *ngIf="fc.terms.errors?.required">Please make sure to accept terms & conditions.</div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <button class="btn submit-btn float-end form-control">Submit</button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<br>
+<br>
+<br>
+<br>
+
+
+<!-- <div class="container-fluid cont-widht">
+  <div class="row">
+
+    <div class="col-12">
+      <h2>REGISTER FOR RIGHT BRAND ASIA FOR PRODUCTS</h2>
+      <p>Register with RIGHT BRAND ASIA to get RBA barcode number for your products on renewal based subscription. The
+        barcode
+        /QR code subscription fee is based on the company's turnover, the number of barcodes/QR codes, & the
+        subscription period.
+        When choosing the number of barcodes to register, consider your current & future requirements for barcodes. Your
+        barcode
+        subscription includes access to our data cart service (base version only) which allows you to allocate barcode
+        numbers, link /
+        relink QR codes and manage all your product data.
+      </p>
+      <div class="p-1 register-div shadow">
+        <h4>REGISTRATION</h4>
+      </div> <br>
+      <div class="p-1 register-div-2 shadow">
+        <h4>REQUIREMENTS FOR SECURE ID & YOUR RIGHTS</h4>
+      </div>
+    </div>
+
+    <form class="row g-3 mt-5 border-form p-3" [formGroup]="registerForm" (ngSubmit)="onSubmit()" novalidate  enctype="multipart/form-data">
+
+      <div class="col-md-8">
+          <label for="title" class="form-label"><h5>BUSINESS TITLE </h5></label>
+          <input formControlName='btitle' type="text" class="form-control" id="title" placeholder="Type Business Title" [ngClass]="{'is-invalid':submitted && fc.btitle.errors}">
+
+          <div class="invalid-feedback" *ngIf="fc.btitle.errors">
+             <div *ngIf="fc.btitle.errors?.required" >Business Title is required</div>
+          </div>
+      </div>
+
+      <div class="col-md-3">
+          <p>SELECT COUNTRY</p>
+          <select class="form-select"  (change)="changeCountry($event)" aria-label="Default select country"  formControlName='country'>
+              <option value="" selected disabled>Please Select Country</option>
+              <option value="pakistan">Pakistan</option>
+              <option value="canada">Canada</option>
+              <option value="uk">UK</option>
+          </select>
+          <div class="invalid-feedback" [ngClass]="fc.country.errors">
+            <div *ngIf="fc.country.errors?.required" >Please select country</div>
+          </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="input-group">
+            <div class="avatar-upload">
+                <ng-container *ngIf="!iconPreview">
+                  <div class="avatar-edit">
+                    <input id="imageUpload" formControlName='upload_profile' (change)="onFileSelect($event)" accept="image/*" [ngClass]="{'is-invalid':submitted &&  fc.upload_profile.errors}" type="file" >
+                    <label for="imageUpload"></label>
+                    <div  class="invalid-feedback" *ngIf="fc.upload_profile.errors">
+                      <div *ngIf="fc.upload_profile.errors?.required">Profile image is required</div>
+                    </div> 
+                  </div>
+                </ng-container>
+                <div class="avatar-preview" *ngIf="iconPreview">
+                  <div id="imagePreview">
+                    <img [src]="iconPreview" alt="Profile Icon Preview">
+                  </div>
+                </div>
+            </div>
+          </div>
+    </div>
+
+      <div class="col-12">
+          <div class="input-group">
+              <span class="input-group-text" id="basic-addon1">Office Address</span>
+              <input formControlName='office_Address' [ngClass]="{'is-invalid':submitted && fc.office_Address.errors}" type="text" class="form-control" placeholder="Office Address" >
+              <div  class="invalid-feedback" *ngIf="fc.office_Address.errors">
+                 <div *ngIf="fc.office_Address.errors?.required">Office Address is required.</div>
+              </div>
+          </div>
+      </div>
+
+
+      <div class="col-12">
+          <div class="input-group">
+              <span class="input-group-text text-2 w-50" id="basic-addon1">Applicant Name</span>
+              <input formControlName='applicant_Name' [ngClass]="{'is-invalid':submitted && fc.applicant_Name.errors}" type="text" class="form-control" placeholder="Applicant Name " >
+              <div  class="invalid-feedback" *ngIf="fc.applicant_Name.errors">
+                <div *ngIf="fc.applicant_Name.errors?.required">Applicant name is required.</div>
+              </div>
+
+          </div>
+      </div>
+      <div class="col-12">
+          <div class="input-group">
+              <span class="input-group-text text-2 w-50" id="basic-addon1">Father Name </span>
+              <input formControlName='applicant_fName' [ngClass]="{'is-invalid':submitted &&  fc.applicant_fName.errors}" type="text" class="form-control" placeholder="Father Name" >
+
+              <div  class="invalid-feedback" *ngIf="fc.applicant_fName.errors">
+                <div *ngIf="fc.applicant_fName.errors?.required">Father name is required</div>
+              </div>
+          </div>
+      </div>
+      <div class="col-12">
+          <div class="input-group">
+              <span class="input-group-text text-2 w-50" id="basic-addon1">Contact Number</span>
+              <input formControlName='contact_Number' type="number" [ngClass]="{'is-invalid':submitted &&  fc.contact_Number.errors}" class="form-control" placeholder="Contact Number" >
+              <div  class="invalid-feedback" *ngIf="fc.contact_Number.errors">
+                <div *ngIf="fc.contact_Number.errors?.required">Contact number is required</div>
+              </div>
+          </div>
+      </div>
+      <div class="col-12">
+          <div class="input-group">
+              <span  for="floatingInput" class="input-group-text text-2 w-50" id="basic-addon1">Email Address</span>
+              <input formControlName='' type="email" class="form-control" id="floatingInput" placeholder="name@example.com" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid':submitted && fc.email.errors }"  id="inputEmail4">
+
+              <div  class="invalid-feedback" *ngIf="fc.email.errors" class="invalid-feedback">
+                <div *ngIf="fc.email.errors?.required">Email is required</div>
+                <div *ngIf="fc.email.errors?.email">Email must be a valid email address</div>
+             </div>
+          </div>
+      </div>
+      <div class="col-12">
+          <div class="input-group">
+              <span class="input-group-text text-2 w-50" id="basic-addon1">Applicant’s Designation</span>
+              <input formControlName='applicant_Designation' type="designation" class="form-control" placeholder="Applicant’s Designation"  [ngClass]="{'is-invalid':submitted &&  fc.applicant_Designation.errors}" >
+
+              <div  class="invalid-feedback" *ngIf="fc.applicant_Designation.errors">
+                <div *ngIf="fc.applicant_Designation.errors?.required">Contact number is required</div>
+              </div>
+          </div>
+      </div>
+      <div class="col-12">
+          <div class="input-group">
+              <span class="input-group-text text-2 w-50" id="basic-addon1">Applicant’s Mother Name <sub>( Security Question )</sub> </span>
+              <input formControlName='applicant_MotherName'  [ngClass]="{'is-invalid':submitted &&  fc.applicant_MotherName.errors}" type="text" class="form-control" placeholder="Applicant’s Mother Name Security Question " >
+              <div  class="invalid-feedback" *ngIf="fc.applicant_MotherName.errors">
+                <div *ngIf="fc.applicant_MotherName.errors?.required">Mother name is required</div>
+              </div>
+          </div>
+      </div>
+      <div class="col-12">
+          <div class="input-group">
+              <span class="input-group-text text-2 w-50" id="basic-addon1">Applicant’s Birthplace <sub>( Security Question )</sub> </span>
+              <input formControlName='applicant_Birthplace' [ngClass]="{'is-invalid':submitted &&  fc.applicant_Birthplace.errors}" type="text" class="form-control" placeholder="Applicant’s Birthplace Security Question" >
+              <div  class="invalid-feedback" *ngIf="fc.applicant_Birthplace.errors">
+                <div *ngIf="fc.applicant_Birthplace.errors?.required">Applicant Birthplace is required</div>
+              </div>
+          </div>
+      </div>
+      <div class="col-12">
+          <div class="input-group">
+              <span class="input-group-text text-2 w-50" id="basic-addon1">Individual Business or Partnership</span>
+              <input formControlName='Individual_Business_Partnership' [ngClass]="{'is-invalid':submitted &&  fc.Individual_Business_Partnership.errors}" type="text" class="form-control" placeholder="Individual Business or Partnership" >
+              <div  class="invalid-feedback" *ngIf="fc.Individual_Business_Partnership.errors">
+                <div *ngIf="fc.Individual_Business_Partnership.errors?.required">Individual Business Partnership field is required</div>
+              </div>
+          </div>
+      </div>
+
+      <div class="col-md-6">
+          <div class="input-group">
+              <span class="input-group-text text-2 w-50" id="basic-addon1"> <b class="text-primary"> UPLOAD </b>&nbsp; Company, Firm etc Reg Certificate </span>
+              <input multiple formControlName='upload_certificate' (change)="onCertifSelect($event)" accept="image/*" [ngClass]="{'is-invalid':submitted &&  fc.upload_certificate.errors}" type="file" class="form-control" placeholder="UPLOAD Company, Firm etc Reg Certificate" >
+              <div  class="invalid-feedback" *ngIf="fc.upload_certificate.errors">
+                <div *ngIf="fc.upload_certificate.errors?.required">Certificate image is required</div>
+              </div>
+          </div>
+      </div>
+      <div class="col-md-12">
+          <div class="input-group">
+              <span class="input-group-text text-2 w-50" id="basic-addon1"> <b class="text-primary"> UPLOAD </b>&nbsp; Company, Firm etc Reg Logo </span>
+              <input multiple formControlName='logo' (change)="onLogoSelect($event)" accept="image/*" [ngClass]="{'is-invalid':submitted &&  fc.logo.errors}" type="file" class="form-control" placeholder="UPLOAD Company, Firm etc Reg Logo" >
+              <div  class="invalid-feedback" *ngIf="fc.logo.errors">
+                <div *ngIf="fc.logo.errors?.required">Logo images is required</div>
+              </div>
+          </div>
+      </div>
+      <div class="col-md-6">
+          <div class="input-group">
+              <span class="input-group-text pass-input" id="basic-addon1">Password </span>
+              <input formControlName='password' type="password" class="form-control" [ngClass]="{'is-invalid':submitted &&  fc.password.errors}" placeholder="Please enter Password" >
+              <div  class="invalid-feedback" *ngIf="fc.password.errors">
+                <div *ngIf="fc.password.errors?.required">Password is required</div>
+              </div>
+          </div>
+      </div>
+      <div class="col-md-6">
+          <div class="input-group">
+              <span class="input-group-text pass-input" id="basic-addon1">Confirm Password </span>
+              <input formControlName='cpassword' type="password" [ngClass]="{'is-invalid':submitted &&  !!fc.cpassword.errors}" class="form-control" placeholder="Please Confirm Password" >
+              <div  class="invalid-feedback" *ngIf="!!fc.cpassword.errors">
+                <div *ngIf="fc.cpassword.errors?.required">Confirm password is required</div>
+                <div *ngIf="fc.cpassword.errors?.notMatch">Password and confirm password doesn't match.</div>
+              </div>
+          </div>
+      </div>
+
+      <div class="col-md-6">
+          <div class="row">
+              <div class="col-6">
+                  <input formControlName="terms" [ngClass]="{'is-invalid':submitted &&  fc.terms.errors}" required type="checkbox"> <span> ACCEPT TERM & CONDITIONS </span> <br>
+                  <div  class="invalid-feedback" *ngIf="fc.terms.errors">
+                    <div *ngIf="fc.terms.errors?.required">Please make sure to accept terms & conditions.</div>
+                  </div>
+                  <button class="btn submit-btn float-end">Submit</button>
+              </div>
+          </div>
+      </div>
+
+  </form>
+
+
+  </div>
+</div> -->
+<br><br><br><br><br>
+
+
+
+
+
+
+
+
+<!-- <div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <mat-form-field appearance="fill" class="form-control">
+        <mat-label>country</mat-label>
+        <mat-select [(ngModel)]="countrySelected" (ngModelChange)="onCountrySelected($event)">
+          <mat-option *ngFor="let country of listcountry" [value]="country.iso2">
+            {{country.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="col-md-6">
+      <mat-form-field appearance="fill" class="form-control">
+        <mat-label>State</mat-label>
+        <mat-select [(ngModel)]="selectedState" (ngModelChange)="onStateSelected()">
+          <mat-option *ngFor="let state of listState" [value]="state.iso2">
+            {{state.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="col-md-6">
+      <mat-form-field appearance="fill" class="form-control">
+        <mat-label>City</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let city of listCity" [value]="city.id">
+            {{city.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+
+  </div>
+
+
+</div> -->
+<br><br><br><br><br><br><br><br><br><br>

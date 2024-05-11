@@ -1,0 +1,69 @@
+<div class="login-page">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6"></div><!-- background image div -->
+      <div class="col-md-6">
+        <div class="log-container">
+          <div class="screen">
+            <div class="screen__content">
+              <h3 class="head">Welcome to Barcodi<span class="head-span">X</span></h3>
+              <form class="login" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <!-- email  -->
+                <div class="login__field">
+                  <i class="login__icon fas fa-user"></i>
+                  <input type="email" class="login__input" id="floatingInput" placeholder="info@example.com"
+                    formControlName="email" [ngClass]="{ 'is-invalid': submitted && fc.email.errors }" id="inputEmail4">
+                  <div *ngIf="submitted && fc.email.errors" class="invalid-feedback">
+                    <div *ngIf="fc.email.errors.required">Email is required</div>
+                    <div *ngIf="fc.email.errors.email">Email must be a valid email address</div>
+                    <div *ngIf="fc.email.errors.confirmEmail">Emails do not match</div>
+                  </div>
+                </div>
+                <!-- Password  -->
+                <div class="login__field pass d-flex">
+                  <i class="login__icon fas fa-lock" (click)="toggleShowPassword()"></i>
+                  <input [type]="showPassword ? 'text' : 'password'" class="login__input pass" id="password"
+                    placeholder="Password" formControlName="password"
+                    [ngClass]="{ 'is-invalid': submitted && fc.password.errors }" id="inputPassword4">
+                  <i (click)="toggleShowPassword()" class='fas fa-eye-slash fa-pull-right mt-3 mr-4'
+                    [class.fa-eye]="showPassword" [class.fa-eye-slash]="!showPassword"></i>
+                  <div *ngIf="submitted && fc.password.errors" class="invalid-feedback">
+                    <div *ngIf="fc.password.errors.required">Password is required</div>
+                    <div *ngIf="fc.password.errors.minLength">Password must be at least {{
+                      fc.password.errors.minLength.requiredLength }} characters long</div>
+                    <div *ngIf="fc.password.errors.maxLength">Password cannot be more than {{
+                      fc.password.errors.maxLength.requiredLength }} characters long</div>
+                  </div>
+                </div>
+
+                <button class="button login__submit">
+                  <span class="button__text">Log In Now</span>
+                  <i class="button__icon fas fa-chevron-right"></i>
+                </button>
+
+              </form>
+
+              <div class="social-login">
+                <h3>Social Links</h3>
+                <div class="social-icons">
+                  <a href="#" class="social-login__icon fab fa-instagram"></a>
+                  <a href="#" class="social-login__icon fab fa-facebook"></a>
+                  <a href="#" class="social-login__icon fab fa-twitter"></a>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="screen__background">
+              <span class="screen__background__shape screen__background__shape4"></span>
+              <span class="screen__background__shape screen__background__shape3"></span>
+              <span class="screen__background__shape screen__background__shape2"></span>
+              <span class="screen__background__shape screen__background__shape1"></span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

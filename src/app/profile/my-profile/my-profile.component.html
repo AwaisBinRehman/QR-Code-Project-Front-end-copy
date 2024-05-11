@@ -1,0 +1,165 @@
+<div class="container-fluid cont-widht">
+    <div class="row">
+
+        <div class="col-12">
+            <h2>Update Profile</h2>
+            <p>Register with RIGHT BRAND ASIA to get RBA barcode number for your products on renewal based subscription.
+                The
+                barcode
+                /QR code subscription fee is based on the company's turnover, the number of barcodes/QR codes, & the
+                subscription period.
+                When choosing the number of barcodes to register, consider your current & future requirements for
+                barcodes. Your
+                barcode
+                subscription includes access to our data cart service (base version only) which allows you to allocate
+                barcode
+                numbers, link /
+                relink QR codes and manage all your product data.
+            </p>
+        </div>
+
+        <form class="row g-3 mt-5 border-form p-3">
+            <div class="row">
+                <div class="col-lg-12 col-sm-12 col-sm-12 col-12 text-center">
+                    <label for="produc-image" class="form-label">Profile Image</label>
+                    <div class="input-group">
+                        <div class="mt-2">
+                            <img [src]="profilePicture" height="100">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" *ngIf="user">
+
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <label for="btitle" class="form-label">
+                            Title:
+                        </label>
+                        <input type="text" readonly [ngModelOptions]="{standalone: true}" [(ngModel)]="user.btitle"
+                            class="form-control">
+                    </div>
+                </div>
+
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <label for="country" class="form-label">Country:</label>
+
+                        <input type="text" readonly [ngModelOptions]="{standalone: true}" [(ngModel)]="user.country"
+                            class="form-control">
+
+                    </div>
+                </div>
+
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <label for="office_Address" class="form-label">office_Address:</label>
+
+                        <input type="text" readonly [ngModelOptions]="{standalone: true}"
+                            [(ngModel)]="user.office_Address" class="form-control">
+
+                    </div>
+                </div>
+
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <label for="applicant_Name" class="form-label">applicant_Name:</label>
+
+                        <input type="text" readonly [ngModelOptions]="{standalone: true}"
+                            [(ngModel)]="user.applicant_Name" class="form-control">
+
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <label for="applicant_fName" class="form-label">applicant_fName:</label>
+
+                        <input type="text" readonly [ngModelOptions]="{standalone: true}"
+                            [(ngModel)]="user.applicant_fName" class="form-control">
+
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <label for="contact_Number" class="form-label">contact_Number:</label>
+
+                        <input type="text" readonly [ngModelOptions]="{standalone: true}"
+                            [(ngModel)]="user.contact_Number" class="form-control">
+
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <label for="applicant_Designation" class="form-label">applicant_Designation:</label>
+
+                        <input type="text" readonly [ngModelOptions]="{standalone: true}"
+                            [(ngModel)]="user.applicant_Designation" class="form-control">
+
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <label for="applicant_MotherName" class="form-label">applicant_MotherName:</label>
+
+                        <input type="text" readonly [ngModelOptions]="{standalone: true}"
+                            [(ngModel)]="user.applicant_MotherName" class="form-control">
+
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <label for="applicant_Birthplace" class="form-label">applicant_Birthplace:</label>
+
+                        <input type="text" readonly [ngModelOptions]="{standalone: true}"
+                            [(ngModel)]="user.applicant_Birthplace" class="form-control">
+
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <label for="Individual_Business_Partnership"
+                            class="form-label">Individual_Business_Partnership:</label>
+
+                        <input type="text" readonly [ngModelOptions]="{standalone: true}"
+                            [(ngModel)]="user.Individual_Business_Partnership" class="form-control">
+
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <label for="email" class="form-label">email:</label>
+
+                        <input type="text" readonly [ngModelOptions]="{standalone: true}" [(ngModel)]="user.email"
+                            class="form-control">
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <label class="form-label">Certificates</label>
+                <ng-container *ngIf="existing_certificates">
+                    <div class="col-3 d-flex flex-column" *ngFor="let item of existing_certificates">
+                        <img src="{{image_url+'/user/'+item}}" height="150" width="150">
+                    </div>
+                </ng-container>
+            </div>
+
+            <div class="row">
+                <label class="form-label">Logos</label>
+                <ng-container *ngIf="existing_logos">
+                    <div class="col-3 d-flex flex-column" *ngFor="let item of existing_logos">
+                        <img src="{{image_url+'/user/'+item}}" height="150" width="150">
+                    </div>
+                </ng-container>
+            </div>
+
+            <div class="row">
+                <div class="col-6">
+                    <a type="button" [routerLink]="'/my-profile/update-profile'" class="btn btn-primary mt-2">Update</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

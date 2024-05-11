@@ -1,0 +1,173 @@
+<div class="container-fluid cont-widht">
+  <div class="row">
+
+    <div class="col-12">
+      <h2>Add PRODUCTS</h2>
+      <p>Register with RIGHT BRAND ASIA to get RBA barcode number for your products on renewal based subscription. The
+        barcode
+        /QR code subscription fee is based on the company's turnover, the number of barcodes/QR codes, & the
+        subscription period.
+        When choosing the number of barcodes to register, consider your current & future requirements for barcodes. Your
+        barcode
+        subscription includes access to our data cart service (base version only) which allows you to allocate barcode
+        numbers, link /
+        relink QR codes and manage all your product data.
+      </p>
+    </div>
+    .col-
+
+
+
+    <!-- <form class="row g-3 mt-5 border-form p-3" #addProduct="ngForm" (ngSubmit)="submit (addProduct.value)">
+            <div class="col-md-8">
+              <div class="form-group">
+                <label for="product_name" class="form-label">
+                  <h5>Product_name</h5>
+                </label>
+                <input type="text" class="form-control" placeholder="Product Name" name="product_name" ngModel="{{productData?.product_name}} ">
+              </div>
+            </div> 
+
+        
+        
+            <div class="col-md-3">
+              <p>Currency Unit</p>
+        
+                <select class="form-select form-control" >
+                  <option value="">-- Select CurrencyUnit  --</option>
+                  <option value="PKR">PKR</option>
+                  <option value="USD">USD</option>
+                  <option value="eur">EUR</option>
+                </select>
+            </div>
+        
+        
+            <div class="col-12">
+              <div class="input-group">
+                <span class="input-group-text" id="basic-addon1">Model</span>
+                <input type="text" class="form-control" placeholder="Model">
+              </div>
+            </div>
+        
+            <div class="col-12">
+              <div class="input-group">
+                <span class="input-group-text text-2 w-50" id="basic-addon1">Manufacturer</span>
+                <input type="text" placeholder="Manufacturer" class="form-control">
+              </div>
+            </div>
+        
+        
+            <div class="col-12">
+              <div class="input-group">
+                <span class="input-group-text text-2 w-50" id="basic-addon1">AvgPrice</span>
+                <input type="number" class="form-control" placeholder="AvgPrice">
+              </div>
+            </div>
+        
+        
+        
+            <div class="col-12">
+              <div class="input-group">
+                <span class="input-group-text text-2 w-50" id="basic-addon1">Specification</span>
+                <input type="text" class="form-control" placeholder="Specification">
+              </div>
+            </div>
+        
+            <div class="col-12">
+              <div class="input-group">
+                <span for="floatingInput" class="input-group-text text-2 w-50" id="basic-addon1">Feature</span>
+                <input type="text" class="form-control"  placeholder="Feature">
+              </div>
+            </div>
+        
+            <div class="col-12">
+              <div class="input-group">
+                <span class="input-group-text text-2 w-50" id="basic-addon1">Description</span>
+                <input type="text" class="form-control"  placeholder="Description">
+ 
+              </div>
+            </div>
+        
+          <div class="col-12">
+              <div class="input-group">
+                <span class="input-group-text text-2 w-50" id="basic-addon1">Product Image</span>
+                <input type="file" accept="upload/image/*" (change)="onCategoryIconChange($event)" class="form-control"
+                  formControlName="productpicture" [ngClass]="{ 'is-invalid': submitted && f.productpicture.errors }" placeholder="Product Image">
+                <div class="mt-2" *ngIf="iconPreview">
+                  <img [src]="iconPreview" alt="Category Icon Preview" height="100">
+                </div>
+              </div>
+            </div> -->
+
+    <!-- <div class="col-md-6">
+              <div class="row">
+                  <div class="col-6">
+                      <button type="submit" class="btn submit-btn float-end">Add Product</button>
+                  </div>
+              </div>
+          </div> 
+        
+          </form>  -->
+    <div *ngIf="productData">
+      <h2>Update Product</h2>
+      <form (submit)="submit(productData)">
+        <div class="form-group">
+          <label for="product_name">Product Name:</label>
+          <input type="text" class="form-control" id="product_name" name="product_name"
+            [(ngModel)]="productData.product_name" required>
+        </div>
+
+        <div class="form-group">
+          <label for="Model">Model:</label>
+          <input type="text" class="form-control" id="Model" name="Model" [(ngModel)]="productData.Model">
+        </div>
+
+        <div class="form-group">
+          <label for="Manufacturer">Manufacturer:</label>
+          <input type="text" class="form-control" id="Manufacturer" name="Manufacturer"
+            [(ngModel)]="productData.Manufacturer">
+        </div>
+
+        <div class="form-group">
+          <label for="AvgPrice">Average Price:</label>
+          <input type="text" class="form-control" id="AvgPrice" name="AvgPrice" [(ngModel)]="productData.AvgPrice">
+        </div>
+
+        <div class="form-group">
+          <label for="CurrencyUnit">Currency Unit:</label>
+          <input type="text" class="form-control" id="CurrencyUnit" name="CurrencyUnit"
+            [(ngModel)]="productData.CurrencyUnit">
+        </div>
+
+        <!-- <div class="form-group">
+                        <label for="Specfication">Specification:</label>
+                        <textarea class="form-control" id="Specfication" name="Specfication" [(ngModel)]="productData.Specfication"></textarea>
+                      </div> -->
+
+        <div class="form-group">
+          <label for="Feature">Feature:</label>
+          <textarea class="form-control" id="Feature" name="Feature" [(ngModel)]="productData.Feature"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="Description">Description:</label>
+          <textarea class="form-control" id="Description" name="Description"
+            [(ngModel)]="productData.Description"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="productpicture">Product Picture:</label>
+          <input type="file" class="form-control" id="productpicture" name="productpicture"
+            (change)="handleFileInput($event)" accept="image/*">
+        </div>
+
+        <div class="d-flex gap-2">
+          <button type="button" class="btn btn-secondary" (click)="cancel()">Cancel</button>
+          <button type="submit" class="btn btn-primary mx-2">Submit</button>
+        </div>
+      </form>
+    </div>
+
+
+  </div><!-- row end  -->
+</div><!-- Container-fluid end  -->

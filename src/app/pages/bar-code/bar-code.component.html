@@ -1,0 +1,186 @@
+<div class="container-fluid mt-5 cont-width">
+  <div class="row">
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xsm-12 first-col">
+      <h1>ONLINE BARCODE <b style="color: #3e849e">GENERATOR</b></h1>
+    </div>
+    <div class="col-lg-8 col-md-8 col-sm-12 col-xsm-12">
+      <p class="main-introl-para">
+        This online barcode generator demonstrates the capabilities of the
+        TBarCode SDK barcode components. TBarCode simplifies bar code creation
+        in your application - e.g. in C# .NET, VB .NET, Microsoft® ASP.NET, ASP,
+        PHP, Delphi and other programming languages. Test this online
+        barcode-generator without any software installation (Terms of Service)
+        and generate your barcodes right now: EAN, UPC, GS1 DataBar, Code-128,
+        QR Code®, Data Matrix, PDF417, Postal Codes, ISBN, etc
+      </p>
+    </div>
+    <div class="downlaod-div text-center mt-5">
+      <p class="download-para">
+        GENERATE & DOWNLOAD
+        <b style="color: #fff; font-size: 1.8rem; font-weight: bold">FREE</b>
+        BARCODES
+      </p>
+    </div>
+  </div>
+</div>
+
+<!--==============================
+    ## bar code section ##
+==================================-->
+
+<div class="container-fluid cont-width mt-5">
+  <h2 class="text-center">
+    Linear Barcodes, 2D Codes, GS1 DataBar, Postal Barcodes and many more!
+  </h2>
+  <br />
+  <div class="inner-color-div p-2">
+    <div class="row">
+
+      <!-- =====================
+      Barcode Type select area start
+      ======================-->
+      <div class="col-lg-4 col-md-4 col-sm-12 col-xsm-12 mt-2">
+        <div class="bg-white p-2">
+          <div class="selection">
+            <label for="barcode" class="en13 me-3"><img class="img-fluid" width="54" src="https://o.remove.bg/downloads/efee2c82-3927-40d1-9481-ff96116ff337/barcode-flat-linear-long-shadow-icon-line-symbol-vector-removebg-preview.png" alt=""></label>
+              <select name="barcode" id="barcode" class="w-100 p-3 select1 btn-2" [(ngModel)]="selectedBarcodeObj">
+                <option [ngValue]="i" *ngFor="let i of barcodeObjs" class="active">
+                  {{ i.name }}
+                </option>
+              </select>
+          </div>
+        </div>
+      </div>
+      <!-- =====================
+      Barcode Type select area end
+      ======================-->
+
+      <!--====================
+        Generate Barcode area start
+        ====================-->
+      <div class="col-lg-4 col-md-4 col-sm-12 col-xsm-12 mt-2">
+        <div class="p-3 bg-white border shadow bar-div">
+          <p>EAN-13 <i class="fa fa-info-circle" aria-hidden="true"></i> <span class="float-end"
+              style="font-size: 0.8rem; color: blue">Create Sequence</span> </p>
+          <p>Data</p>
+          <!-- <textarea class="form-control" placeholder="bc-value" [(ngModel)]="value"></textarea> -->
+          <textarea class="form-control" placeholder="bc-value" [(ngModel)]="value"></textarea>
+          <br />
+          <input type="checkbox" />
+          <span style="font-size: 0.9rem">
+            Genrate one barcode per row
+            <span class="float-end">
+              <button class="btn gentrate-button" id="btn_generate">
+                Refresh
+              </button>
+            </span>
+          </span>
+          <br />
+          <input type="checkbox" />
+          <span style="font-size: 0.9rem"> Evaluate escape Sequence</span>
+          <br />
+          <p style="font-size: 0.8rem">
+            &nbsp;&nbsp;&nbsp;&nbsp; Learn more in this video and the Barcode
+            Reference: use <br />&nbsp;&nbsp;&nbsp;&nbsp; \F for FNC.1, \tfor
+            TAB, \n for ENTER
+          </p>
+          <p style="color: blue; font-size: 0.8rem">
+            FAQ: How Do I Create Barcode for My Product?
+          </p>
+        </div>
+      </div>
+      <!--====================
+         Type Barcode area End
+        ====================-->
+
+        <!--====================
+          Barcode Display area
+        =====================-->
+      <div class="col-lg-4 col-md-4 col-sm-12 col-xsm-12 mt-2">
+        <div class="p-3 bg-white border shadow bar-div">
+          <span class="float-start"><i class="fa fa-clone" aria-hidden="true"></i></span>
+          <span class="float-end">
+            <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+              aria-controls="offcanvasRight">
+              <i class="fa fa-cog" aria-hidden="true"></i>
+            </button>
+          </span>
+          <div class="p-5 text-center b-code">
+            <!-- <ngx-barcode #parentBarcode [bc-value]="value" [bc-display-value]="true"></ngx-barcode> -->
+            <ngx-barcode #parentBarcode [bc-format]="selectedBarcodeObj.value" [bc-width]="selectedWidth"
+              [bc-height]="selectedHeight" [bc-font-size]="selectedFontSize" [bc-value]="value"
+              [bc-display-value]="true">
+            </ngx-barcode>
+
+          </div>
+          <div class="download-div text-center">
+            <button class="fullButton downloadButton btn form-control btn-danger" (click)="saveAsImage(parentBarcode)">
+              <span>Download</span>
+            </button>
+          </div>
+        </div>
+      </div>
+        <!--====================
+          Barcode Display area
+        =====================-->
+
+    </div><!-- row end -->
+  </div><!-- inner div end  -->
+</div><!-- container-fluid end  -->
+
+        <!--====================
+          Empty 3 divs for use anything
+        =====================-->
+<div class="container-fluid cont-width mt-4">
+  <div class="row">
+    <div class="col-lg-4 col-md-4 col-sm-12 mt-2 shadow p-1">
+      <img src="https://i.pinimg.com/736x/e6/3b/6d/e63b6d7cae4a199b6a294c3d11aaaa5e.jpg" class="img-fluid" alt="" />
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-12 mt-2 shadow p-1">
+      <img src="../assets/icons/box2.jpg" class="img-fluid" alt="" />
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-12 mt-2 shadow p-1">
+      <img src="https://cdn.pixabay.com/photo/2019/02/02/14/27/qr-code-3970681_640.jpg" class="img-fluid h-100" alt="" />
+    </div>
+  </div>
+</div>
+
+<!--============================================
+    ## Bar-Code Setting drawer area  ## yahn par bar code ki setting hay 
+=============================================-->
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+  <div class="offcanvas-header">
+    <h5 id="offcanvasRightLabel text-center">GENERAL SETTING</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+
+    <div class="selection">
+      <label for="barcode">Barcodeformat:
+        <select name="barcode" id="barcode" [(ngModel)]="selectedBarcodeObj">
+          <option [ngValue]="i" *ngFor="let i of barcodeObjs">
+            {{ i.name }}
+          </option>
+        </select>
+      </label>
+    </div>
+
+    <label for="width" class="label mt-2">Linewidth:</label>
+    <select name="width" id="width" class="form-control select" [(ngModel)]="selectedWidth">
+      <option [ngValue]="j" *ngFor="let j of widths">{{ j }}</option>
+    </select>
+
+    <label for="heigth" class="label mt-2">Heigth:</label>
+    <select name="heigth" id="heigth" class="form-control select" [(ngModel)]="selectedHeight">
+      <option [ngValue]="i" *ngFor="let i of heights">{{ i }}</option>
+    </select>
+
+    <label for="fontSize" class="label mt-2">Fontsize:</label>
+    <select name="fontSize" id="fontSize" class="form-control select" [(ngModel)]="selectedFontSize">
+      <option [ngValue]="i" *ngFor="let i of fontSizes">{{ i }}</option>
+    </select>
+
+
+  </div><!-- end offcanvas-body -->
+</div><!-- end offcanvas -->
