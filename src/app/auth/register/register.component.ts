@@ -7,6 +7,7 @@ import { City } from 'src/app/share/models/city';
 import { Country } from 'src/app/share/models/country';
 import { State } from 'src/app/share/models/state';
 import { CountrystatecityService } from 'src/app/share/services/countrystatecity.service';
+import { elementAt } from 'rxjs';
 
 @Component({
   selector: 'app-register',
@@ -52,21 +53,20 @@ export class RegisterComponent implements OnInit {
     if (this.upload_profile) {
       formdata.append(
         'upload_profile',
-        this.upload_profile,
-        this.upload_profile.relativePath
+        this.upload_profile
       );
     }
 
     if (this.upload_certificate) {
-      formdata.append(
-        'upload_certificate',
-        this.upload_certificate,
-        this.upload_certificate.relativePath
-      );
+      this.upload_certificate.forEach(element => {
+        formdata.append('upload_certificate', element);
+      })
     }
 
     if (this.logo) {
-      formdata.append('logo', this.logo, this.logo.relativePath);
+      this.logo.forEach(element => {
+        formdata.append('logo', element);
+      })
     }
 
     const user: any = {
@@ -108,23 +108,44 @@ export class RegisterComponent implements OnInit {
     if (file) {
       const reader = new FileReader();
       reader.onload = (e: any) => {
+        this.upload_profile = file;
         this.iconPreview = e.target.result;
       };
       reader.readAsDataURL(file);
     }
   }
 
-  upload_certificate: any;
+  upload_certificate: any[]=[];
   onCertifSelect(event: any) {
-    this.upload_certificate = event.target.files[0];
+    const files: File[] = event.target.files;
+    if (files && files.length > 0) {
+      const fileList = Array.from(files);
+      fileList.forEach(element => {
+        const reader = new FileReader();
+        reader.onload = () => {
+          this.upload_certificate.push(element)
+        };
+        reader.readAsDataURL(element);
+      });
+    }
   }
-  logo: any;
+
+  logo: any [] = [];
   onLogoSelect(event: any) {
-    this.logo = event.target.files[0];
+    const files: File[] = event.target.files;
+    if (files && files.length > 0) {
+      const fileList = Array.from(files);
+      fileList.forEach(element => {
+        const reader = new FileReader();
+        reader.onload = () => {
+          this.logo.push(element)
+        };
+        reader.readAsDataURL(element);
+      });
+    }
   }
 
   ngOnInit() {
-    //Add User form validations
     this.registerForm = this.formBuilder.group(
       {
         email: ['', [Validators.required, Validators.email]],
@@ -140,9 +161,9 @@ export class RegisterComponent implements OnInit {
         applicant_MotherName: ['', [Validators.required]],
         applicant_Birthplace: ['', [Validators.required]],
         Individual_Business_Partnership: ['', [Validators.required]],
-        upload_profile: ['', [Validators.required]],
-        upload_certificate: [[]],
-        logo: [[]],
+        upload_profile: [null, [Validators.required]],
+        upload_certificate: [null],
+        logo: [null],
         terms: ['', [Validators.required]],
       },
       {

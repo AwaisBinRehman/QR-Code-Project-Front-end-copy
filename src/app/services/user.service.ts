@@ -45,11 +45,9 @@ export class UserService {
     return this.http.post<User>(USER_REGISTER_URL, userRegiser).pipe(
       tap({
         next: (user) => {
-          this.setUserToLocalStorage(user);
-          this.userSubject.next(user);
           this.toastrService.success(
-            `Welcome  ${user.name}`,
-            'Register Successful'
+            `Welcome`,
+            'Register Successful, \n Login to proceed'
           );
         },
         error: (errorResponse) => {
