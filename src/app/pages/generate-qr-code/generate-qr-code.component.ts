@@ -154,7 +154,7 @@ export class GenerateQRCodeComponent implements OnInit {
   }
 
   get loggedIn(): boolean {
-    if (this.userSer.getUserFromLocalStorage().token) {
+    if (this.userSer.getUserFromLocalStorage()?.token) {
       return true;
     } else {
       return false;

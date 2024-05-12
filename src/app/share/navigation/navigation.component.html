@@ -15,8 +15,8 @@
             <a class="nav-link hvr-sweep-to-bottom" routerLink="generate-bar-code">BARCODE</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link hvr-sweep-to-bottom" *ngIf="!isLoggedIN" routerLink="Create-QR-code">QR CODE</a>
             <a class="nav-link hvr-sweep-to-bottom" *ngIf="isLoggedIN" routerLink="Qr-Codes">QR CODE</a>
-            <a class="nav-link hvr-sweep-to-bottom" *ngIf="!isLoggedIN" routerLink="generate-QR-code">QR CODE</a>
           </li>
           <li class="nav-item">
             <a class="nav-link hvr-sweep-to-bottom" routerLink="choose-Price-Plan">PRICING</a>
